@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Delest</title>
+<link rel="stylesheet" href="theme.css">
+<style>
+  /* Vario's main window, Delest's pages: page keys along the top, the page below. */
+  .top { position: absolute; left: 0; right: 0; top: 0; height: 40px; border-bottom: 1px solid var(--edge); }
+  .top .logo { position: absolute; left: 12px; top: 9px; }
+  .pages { position: absolute; left: 84px; top: 8px; display: flex; gap: 4px; }
+  .tab { height: 24px; padding: 0 9px; border-radius: 5px; border: 1px solid transparent; background: transparent;
+    color: var(--muted); font-size: 9px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; }
+  .tab:hover { background: var(--plate); }
+  .tab[aria-current="page"] { background: var(--key); border-color: var(--edge); color: var(--accent); }
+  .scan-note { position: absolute; right: 150px; top: 13px; max-width: 210px; font-size: 9px; color: var(--muted);
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  #gauge { position: absolute; right: 34px; top: 7px; width: 108px; padding: 0; }
+  main { position: absolute; left: 0; right: 0; top: 41px; bottom: 0; overflow-y: auto; padding: 9px 12px 12px;
+    display: flex; flex-direction: column; gap: 8px; }
+  header.page-head { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; min-height: 26px; }
+  /* The page key names the page; its title stays for screen readers. */
+  header.page-head h1 { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  header.page-head:has(> h1:only-child) { display: contents; }
+  .head-actions { margin-left: auto; display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+  .grid2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .space { display: flex; flex-direction: column; gap: 8px; }
+  .readout { display: flex; align-items: baseline; gap: 8px; }
+  .readout b { font-size: 28px; font-weight: 800; line-height: 1; }
+  .disk-bar { display: flex; gap: 2px; height: 14px; }
+  .disk-bar span { flex: 1; border-radius: 1px; }
+  .legend { display: grid; grid-template-columns: repeat(2, 7px minmax(0, 1fr) auto); gap: 3px 6px; align-items: center; font-size: 10px; column-gap: 6px; }
+  .legend b { font-family: var(--mono); font-weight: 500; font-size: 10px; margin-right: 10px; }
+  .after { grid-column: 1 / -1; color: var(--muted); font-size: 10px; }
+  .legend .after b { color: var(--text); font: 700 10px var(--font); margin: 0; }
+  .card.display { background: var(--display); }
+  .stack { display: flex; flex-direction: column; gap: 6px; }
+  /* Proposals */
+  .filters { display: flex; flex-wrap: wrap; gap: 4px; }
+  .filter { height: 20px; padding: 0 8px; border-radius: 4px; font-size: 10px; font-weight: 600; color: var(--soft); }
+  .filter[aria-pressed="true"] { border-color: var(--accent); color: var(--accent); }
+  details.project { background: var(--panel); border: 1px solid var(--edge); border-radius: 7px; }
+  #hooks .setting { padding: 7px 0; border-top: 1px solid var(--edge); }
+  #hooks .setting:first-child { border-top: none; }
+  details.project > summary { list-style: none; display: flex; align-items: center; gap: 8px; padding: 7px 10px; cursor: pointer; }
+  details.project > summary::-webkit-details-marker { display: none; }
+  summary .name { font-weight: 700; }
+  summary .root { color: var(--muted); font-size: 10px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; flex: 1; }
+  summary .total { font-family: var(--mono); font-size: 11px; }
+  .item { display: grid; grid-template-columns: 13px minmax(0, 1fr) 60px; gap: 2px 8px; padding: 6px 10px 6px 31px; border-top: 1px solid var(--edge); align-items: start; }
+  .item .what { font-size: 11px; }
+  .item .trace { grid-column: 2 / 4; font-size: 10px; color: var(--muted); }
+  .item .note { color: var(--review); font-size: 10px; }
+  .item .value { text-align: right; font-family: var(--mono); font-size: 11px; }
+  .footer-bar { position: sticky; bottom: -12px; margin: 0 -12px -12px; padding: 8px 12px; background: var(--panel-bottom); border-top: 1px solid var(--edge); display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .confirm { border-color: var(--accent); }
+  .before-after { display: grid; grid-template-columns: max-content minmax(0, 1fr) 60px; gap: 6px 10px; align-items: center; margin: 8px 0; font-size: 11px; }
+  .before-after .track { display: block; height: 8px; border-radius: 4px; background: var(--raised); overflow: hidden; }
+  .before-after .fill { display: block; height: 100%; border-radius: 4px; }
+  /* Quarantine and settings */
+  .row { display: grid; grid-template-columns: 13px minmax(0, 1fr) 64px 84px auto; gap: 8px; align-items: center; padding: 6px 10px; border-top: 1px solid var(--edge); font-size: 11px; }
+  .row:first-child { border-top: 0; }
+  .row > span:nth-child(2) { min-width: 0; overflow-wrap: anywhere; }
+  .list { background: var(--panel); border: 1px solid var(--edge); border-radius: 7px; }
+  .setting { display: flex; gap: 10px; align-items: center; justify-content: space-between; flex-wrap: wrap; }
+  .setting h2 { margin: 0 0 2px !important; }
+  .inline { display: flex; gap: 6px; flex-wrap: wrap; }
+  /* AI */
+  .views { display: flex; gap: 4px; }
+  .opinion { grid-column: 2 / 4; padding: 6px 8px; border-radius: 6px; background: var(--display); border: 1px solid var(--edge); display: flex; flex-direction: column; gap: 3px; }
+  .opinion .head { display: flex; gap: 6px; align-items: center; }
+  .opinion .who { font-size: 8px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; color: var(--accent); }
+  .opinion .why { font-size: 10px; color: var(--muted); }
+  .chip.keep { color: var(--free); border-color: #2f6b50; }
+  .chip.review { color: var(--review); border-color: #7a5520; }
+  .ask-link { font-size: 10px; font-weight: 600; background: transparent; border: 0; color: var(--accent); padding: 0; height: auto; }
+  .unknown { background: var(--panel); border: 1px solid var(--edge); border-radius: 7px; padding: 8px 10px; display: grid; grid-template-columns: 13px minmax(0, 1fr) 60px; gap: 4px 8px; }
+  .bubble { max-width: 88%; padding: 8px 10px; border-radius: 10px; font-size: 12px; line-height: 1.5; white-space: pre-wrap; }
+  .bubble.me { align-self: flex-end; background: var(--key); border: 1px solid var(--accent); border-radius: 10px 10px 2px 10px; }
+  .bubble.it { background: var(--display); border: 1px solid var(--edge); border-radius: 10px 10px 10px 2px; }
+  .bubble .again { display: block; margin-top: 6px; }
+  .bubble .by { display: block; font-size: 8px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; color: var(--accent); margin-bottom: 4px; }
+  .suggest { height: 22px; padding: 0 9px; border-radius: 4px; font-size: 10px; }
+  .journal { display: grid; grid-template-columns: 70px minmax(0, 1.2fr) minmax(0, 1.4fr) 76px minmax(0, 1fr); gap: 8px; padding: 6px 10px; border-top: 1px solid var(--edge); font-size: 11px; align-items: center; }
+  .journal.head { border-top: 0; font-size: 8px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; color: var(--muted); }
+</style>
+</head>
+<body>
+<div class="panel window">
+<div class="top">
+  <div class="logo">Delest</div>
+  <nav class="pages" aria-label="Sections">
+    <button class="tab" data-page="disque" aria-current="page" data-t>Disque</button>
+    <button class="tab" data-page="propositions" data-t>Propositions</button>
+    <button class="tab" data-page="quarantaine" data-t>Quarantaine</button>
+    <button class="tab" data-page="reglages" data-t>Réglages</button>
+  </nav>
+  <div id="scan-note" class="scan-note"></div>
+  <button id="gauge" data-t>Jauge flottante</button>
+  <button class="close" id="close" aria-label="Quitter Delest">×</button>
+</div>
+
+<main>
+  <section id="page-disque" class="stack" style="gap:8px">
+    <header class="page-head">
+      <h1 data-t>Disque</h1>
+      <span id="level" class="chip"></span>
+      <span id="free-line" class="muted" style="font-size:10px"></span>
+      <div class="head-actions">
+        <input id="folder" type="text" placeholder="Dossier (par défaut : le dernier)" aria-label="Dossier à analyser" style="width:220px">
+        <button id="rescan" data-t>Analyser</button>
+      </div>
+    </header>
+    <div id="disk-message" class="message" hidden></div>
+    <div class="grid2">
+      <div class="card space">
+        <h2 style="margin:0" data-t>Espace</h2>
+        <div class="readout"><b id="space-free"></b><span id="space-of" class="muted" style="font-size:11px"></span></div>
+        <div id="disk-bar" class="disk-bar" role="img"></div>
+        <div id="legend" class="legend"></div>
+      </div>
+      <div class="card"><h2 data-t>Par type de dossier</h2><div id="kinds" class="stack"></div></div>
+    </div>
+    <div class="grid2">
+      <div class="card">
+        <h2 data-t>Les projets qui pèsent le plus</h2>
+        <div id="projects" class="stack"></div>
+        <button id="see-all" style="margin-top:10px"></button>
+      </div>
+      <div class="card display">
+        <h2 data-t>Espace libre</h2>
+        <svg id="history" width="100%" height="130" viewBox="0 0 460 170" role="img" aria-label="Historique de l'espace libre"></svg>
+        <p class="muted" style="font-size:9px" data-t>Un point par jour, gardé 90 jours ; la bande orange est sous le seuil d'alerte.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="page-propositions" class="stack" style="gap:14px" hidden>
+    <header class="page-head">
+      <h1 data-t>Propositions</h1>
+      <div class="views" role="group" aria-label="Vue">
+        <button id="view-known" class="filter" aria-pressed="true"></button>
+        <button id="view-unknown" class="filter" aria-pressed="false"></button>
+      </div>
+      <span class="muted" data-t>Cochez ce qui part en quarantaine ; rien ne bouge avant votre confirmation.</span>
+    </header>
+    <div id="known-view" class="stack" style="gap:10px">
+      <div id="filters" class="filters" role="group" aria-label="Types de dossier"></div>
+      <div id="project-list" class="stack" style="gap:10px"></div>
+    </div>
+    <div id="unknown-view" class="stack" style="gap:8px" hidden>
+      <p class="muted" style="font-size:11px" data-t>Aucune règle ne reconnaît ces dossiers. Le modèle donne son avis ; rien n'est coché d'avance, et un inconnu reste au mieux « à juger ».</p>
+      <div class="inline"><button id="advise" data-t>Demander l'avis du modèle</button><span id="advise-note" class="muted" style="font-size:10px;align-self:center"></span></div>
+      <div id="unknown-list" class="stack" style="gap:8px"></div>
+    </div>
+    <div id="confirm" class="card confirm" hidden>
+      <h2 data-t>Aperçu avant la quarantaine</h2>
+      <p id="confirm-line"></p>
+      <div class="before-after">
+        <span class="muted" data-t>Libre avant</span><span class="track"><span id="bar-before" class="fill" style="background:var(--used)"></span></span><span id="free-before" class="mono"></span>
+        <span class="muted" data-t>Libre après suppression</span><span class="track"><span id="bar-after" class="fill" style="background:var(--accent)"></span></span><span id="free-after" class="mono"></span>
+      </div>
+      <p class="muted" style="font-size:10px;margin-bottom:8px" data-t>Chaque dossier est vérifié de nouveau juste avant : il reste en place s'il a changé, s'il vient d'être modifié ou si un programme l'utilise. Tout reste restaurable 7 jours ; l'espace se libère à la fin de ce délai, ou tout de suite avec « Supprimer définitivement » dans la Quarantaine.</p>
+      <div class="inline">
+        <button id="do-quarantine" class="primary" data-t>Mettre en quarantaine</button>
+        <button id="cancel-quarantine" data-t>Annuler</button>
+      </div>
+    </div>
+    <div id="clean-message" class="message" hidden></div>
+    <div class="footer-bar">
+      <span id="selection-line"></span>
+      <button id="see-preview" class="primary" style="margin-left:auto" data-t>Voir l'aperçu</button>
+    </div>
+  </section>
+
+  <section id="page-quarantaine" class="stack" style="gap:14px" hidden>
+    <header class="page-head">
+      <h1 data-t>Quarantaine</h1>
+      <span id="quarantine-line" class="muted"></span>
+    </header>
+    <div id="quarantine-list" class="list"></div>
+    <div id="purge-confirm" class="card confirm" hidden>
+      <p id="purge-line" style="margin-bottom:12px"></p>
+      <div class="inline">
+        <button id="do-purge" class="danger" data-t>Supprimer définitivement</button>
+        <button id="cancel-purge" data-t>Annuler</button>
+      </div>
+    </div>
+    <div id="quarantine-message" class="message" hidden></div>
+    <div class="inline">
+      <button id="ask-purge" class="danger" disabled data-t>Supprimer définitivement la sélection</button>
+      <span class="muted" style="font-size:10px;align-self:center" data-t>Seul ce qui se reconstruit localement peut être supprimé avant 7 jours.</span>
+    </div>
+  </section>
+
+  <section id="page-demander" class="stack" style="gap:10px" hidden>
+    <header class="page-head">
+      <h1 data-t>Demander à Delest</h1>
+      <span id="ask-folder" class="muted"></span>
+      <div class="head-actions"><button id="ask-back" data-t>Retour aux propositions</button></div>
+    </header>
+    <div class="inline" id="suggestions">
+      <button class="suggest" data-t>À quoi sert ce dossier ?</button>
+      <button class="suggest" data-t>Que se passe-t-il si je le supprime ?</button>
+      <button class="suggest" data-t>Combien de temps pour le reconstruire ?</button>
+    </div>
+    <div id="conversation" class="stack" style="gap:10px;flex:1;min-height:120px"></div>
+    <div id="agent-offer" class="message" style="display:flex;gap:10px;align-items:center;flex-wrap:wrap" hidden>
+      <span data-t>Besoin d'un avis plus sûr ? Delest peut poser la même question à votre agent.</span>
+      <button id="ask-agent" style="margin-left:auto" data-t>Demander à Claude Code</button>
+    </div>
+    <p class="muted" style="font-size:10px" data-t>Le modèle local répond sur la machine. Si vous demandez à Claude Code, le chemin du dossier et les noms de son contenu lui sont envoyés, jamais le contenu des fichiers. Ni l'un ni l'autre ne peut rendre un dossier supprimable.</p>
+    <form id="ask-form" class="inline" style="padding-top:8px;border-top:1px solid var(--edge)">
+      <label for="question" style="position:absolute;width:1px;height:1px;overflow:hidden" data-t>Votre question</label>
+      <input id="question" type="text" placeholder="Posez une question sur ce dossier…" style="flex:1">
+      <button id="ask-send" class="primary" type="submit" data-t>Demander</button>
+    </form>
+  </section>
+
+  <section id="page-reglages" class="stack" style="gap:14px" hidden>
+    <header class="page-head"><h1 data-t>Réglages</h1></header>
+    <div class="card setting">
+      <div><h2 style="margin:0 0 4px" data-t>Langue</h2><p id="language-line" class="muted"></p></div>
+      <div id="language" class="views" role="group" aria-label="Langue">
+        <button class="filter" data-lang="system"></button>
+        <button class="filter" data-lang="en" lang="en">English</button>
+        <button class="filter" data-lang="fr" lang="fr">Français</button>
+      </div>
+    </div>
+    <div class="card">
+      <h2 style="margin:0 0 4px" data-t>Contrôle à chaque session des agents</h2>
+      <p class="muted" style="margin:0 0 6px" data-t>Au début de chaque session, Delest regarde l'espace libre ; il ne dit rien sauf alerte.</p>
+      <div id="hooks"></div>
+    </div>
+    <div class="card setting">
+      <div><h2 style="margin:0 0 4px" data-t>Contrôle toutes les 4 heures</h2><p id="timer-line" class="muted"></p></div>
+      <button id="timer-toggle"></button>
+    </div>
+    <div class="card">
+      <h2 data-t>Dossiers protégés</h2>
+      <p class="muted" style="margin-bottom:10px" data-t>Delest ne propose jamais un dossier protégé, ni rien de ce qu'il contient.</p>
+      <div id="protected" class="stack"></div>
+      <div class="inline" style="margin-top:12px">
+        <input id="protect-path" type="text" placeholder="~/Clients/archive" aria-label="Dossier à protéger" style="flex:1">
+        <button id="protect-add" data-t>Protéger</button>
+      </div>
+    </div>
+    <div class="card">
+      <h2 data-t>Règles en ombre</h2>
+      <p class="muted" style="margin-bottom:10px" data-t>Ces nouvelles règles reconnaissent leurs dossiers sans rien proposer. Pour en accepter une après le rejeu du corpus : delest shadow accept &lt;règle&gt;.</p>
+      <div id="shadow" class="stack"></div>
+    </div>
+    <div class="card">
+      <h2 data-t>IA</h2>
+      <div id="ai" class="stack"></div>
+      <div id="ai-install" class="setting" style="margin-top:10px" hidden>
+        <span class="muted" data-t>Le moteur ou les modèles manquent : Delest fonctionne, mais sans avis sur les dossiers inconnus.</span>
+        <button id="ai-install-open" class="primary" data-t>Installer l'IA locale</button>
+      </div>
+      <div id="ai-install-panel" class="message stack" style="margin-top:8px;gap:6px" hidden></div>
+      <div class="setting" style="margin-top:10px">
+        <span id="agent-line" class="muted"></span>
+        <div class="views" role="group" aria-label="Votre agent">
+          <button id="agent-on" class="filter" data-t>Sur demande</button>
+          <button id="agent-off" class="filter" data-t>Jamais</button>
+        </div>
+      </div>
+      <p class="muted" style="font-size:10px;margin-top:8px" data-t>Le modèle ne traite que les inconnus, et seulement vers la prudence : il ne rend jamais un dossier supprimable, ne lève aucun interdit et n'agit jamais sans vous.</p>
+    </div>
+    <div class="card">
+      <h2 data-t>Journal des avis</h2>
+      <div id="journal" class="list"></div>
+    </div>
+    <div class="card setting">
+      <div><h2 style="margin:0 0 4px" data-t>À propos</h2><p id="about-line" class="muted"></p></div>
+      <button id="project" data-t>Le projet sur GitHub</button>
+    </div>
+    <div id="settings-message" class="message" hidden></div>
+  </section>
+</main>
+</div>
+<script src="common.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

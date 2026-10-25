@@ -1,0 +1,15 @@
+{
+  "bundle": {
+    "active": true,
+    "targets": ["app", "dmg"],
+    "icon": ["icons/icon.icns", "icons/icon.png"],
+    "externalBin": ["binaries/delest"],
+    "category": "DeveloperTool",
+    "shortDescription": "Frees a developer's disk space without touching their work",
+    "copyright": "© 2026 Othman Kaabaoui, licence MIT",
+    "macOS": {
+      "signingIdentity": "-",
+      "minimumSystemVersion": "12.0"
+    }
+  }
+}

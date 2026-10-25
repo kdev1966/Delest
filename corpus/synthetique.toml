@@ -1,0 +1,247 @@
+# Corpus d'acceptation synthétique : les situations du poste de référence, recréées
+# dans un dossier temporaire sur chaque système (macOS, Linux, Windows) par
+# `cargo test`. Mêmes sections et mêmes verdicts que poste-reference.toml.
+#
+# Pour construire chaque cas :
+#   fichiers : les fichiers à créer, relatifs au dossier personnel ;
+#   depot    : un dépôt git à créer là, avec tous ses fichiers suivis ;
+#   ignore   : le .gitignore de ce dépôt (écrit avant le commit) ;
+#   apres    : des fichiers créés après le commit, donc non suivis.
+# Chaque cas a son propre projet, pour qu'aucun n'influe sur un autre.
+
+# ------------------------------------------------------------ Reconstructibles
+
+[[dossier]]
+chemin = "~/rust/target"
+reference = "supprimable"
+fichiers = ["rust/Cargo.toml", "rust/Cargo.lock", "rust/src/main.rs", "rust/target/debug/app"]
+depot = "rust"
+ignore = "target/\n"
+
+[[dossier]]
+chemin = "~/web/dist"
+reference = "supprimable"
+fichiers = ["web/package.json", "web/src/index.ts", "web/dist/index.js"]
+depot = "web"
+ignore = "dist/\n"
+
+[[dossier]]
+chemin = "~/site/.next"
+reference = "supprimable"
+fichiers = ["site/package.json", "site/next.config.js", "site/app/page.tsx", "site/.next/build-manifest.json"]
+depot = "site"
+ignore = ".next/\n"
+
+[[dossier]]
+chemin = "~/mono/.turbo"
+reference = "supprimable"
+fichiers = ["mono/package.json", "mono/turbo.json", "mono/.turbo/cache/a.tar"]
+depot = "mono"
+ignore = ".turbo/\n"
+
+[[dossier]]
+chemin = "~/py/app/__pycache__"
+reference = "supprimable"
+fichiers = ["py/app/main.py", "py/app/__pycache__/main.cpython-312.pyc"]
+depot = "py"
+ignore = "__pycache__/\n"
+
+[[dossier]]
+chemin = "~/android/app/build"
+reference = "supprimable"
+fichiers = ["android/settings.gradle.kts", "android/app/build.gradle.kts", "android/app/src/main/Main.kt", "android/app/build/outputs/app.apk"]
+depot = "android"
+ignore = "build/\n"
+
+[[dossier]]
+chemin = "~/android2/.gradle"
+reference = "supprimable"
+fichiers = ["android2/settings.gradle.kts", "android2/build.gradle.kts", "android2/.gradle/8.0/cache.bin"]
+depot = "android2"
+ignore = ".gradle/\n"
+
+[[dossier]]
+chemin = "~/flutter/.dart_tool"
+reference = "supprimable"
+fichiers = ["flutter/pubspec.yaml", "flutter/lib/main.dart", "flutter/.dart_tool/package_config.json"]
+depot = "flutter"
+ignore = ".dart_tool/\n"
+
+# ------------------------------------------------------------ Avec le réseau
+
+[[dossier]]
+chemin = "~/node/node_modules"
+reference = "supprimable_en_ligne"
+fichiers = ["node/package.json", "node/package-lock.json", "node/node_modules/left-pad/index.js"]
+depot = "node"
+ignore = "node_modules/\n"
+
+[[dossier]]
+chemin = "~/pnpm/packages/web/node_modules"
+reference = "supprimable_en_ligne"
+fichiers = ["pnpm/pnpm-lock.yaml", "pnpm/package.json", "pnpm/packages/web/package.json", "pnpm/packages/web/node_modules/react/index.js"]
+depot = "pnpm"
+ignore = "node_modules/\n"
+
+[[dossier]]
+chemin = "~/ios/Pods"
+reference = "supprimable_en_ligne"
+fichiers = ["ios/Podfile", "ios/Podfile.lock", "ios/Pods/Alamofire/Source.swift"]
+depot = "ios"
+ignore = "Pods/\n"
+
+[[dossier]]
+chemin = "~/uv/.venv"
+reference = "supprimable_en_ligne"
+fichiers = ["uv/pyproject.toml", "uv/uv.lock", "uv/.venv/pyvenv.cfg", "uv/.venv/lib/site.py"]
+depot = "uv"
+ignore = ".venv/\n"
+
+# ------------------------------------------------------------ À juger
+
+[[dossier]]
+chemin = "~/req/.venv"
+reference = "a_juger"
+fichiers = ["req/requirements.txt", "req/main.py", "req/.venv/pyvenv.cfg", "req/.venv/lib/site.py"]
+depot = "req"
+ignore = ".venv/\n"
+
+[[dossier]]
+chemin = "~/nolock/.venv"
+reference = "a_juger"
+fichiers = ["nolock/main.py", "nolock/.venv/pyvenv.cfg"]
+depot = "nolock"
+ignore = ".venv/\n"
+
+# Hors de tout dépôt git, mais son manifeste à côté : supprimable.
+[[dossier]]
+chemin = "~/horsgit/build"
+reference = "supprimable"
+fichiers = ["horsgit/pubspec.yaml", "horsgit/build/app.apk"]
+
+# ------------------------------------------------------------ Protégés
+
+# Non suivi et non ignoré par git : interdit absolu.
+[[dossier]]
+chemin = "~/untracked/build"
+reference = "protege"
+fichiers = ["untracked/pubspec.yaml"]
+depot = "untracked"
+apres = ["untracked/build/app.apk"]
+
+# Des fichiers suivis par git à l'intérieur.
+[[dossier]]
+chemin = "~/tracked/node_modules"
+reference = "protege"
+fichiers = ["tracked/package.json", "tracked/package-lock.json", "tracked/node_modules/patched/index.js"]
+depot = "tracked"
+
+# Un secret dans un dossier de compilation.
+[[dossier]]
+chemin = "~/secret/build"
+reference = "protege"
+fichiers = ["secret/pubspec.yaml", "secret/build/app/.env"]
+depot = "secret"
+ignore = "build/\n"
+
+# Un certificat dans un dist.
+[[dossier]]
+chemin = "~/cert/dist"
+reference = "protege"
+fichiers = ["cert/package.json", "cert/dist/ca.pem"]
+depot = "cert"
+ignore = "dist/\n"
+
+# Du code source C sous un target ignoré, sans manifeste à côté (composants ESP-IDF).
+[[dossier]]
+chemin = "~/esp/managed_components/camera/target"
+reference = "protege"
+fichiers = ["esp/CMakeLists.txt", "esp/managed_components/camera/target/esp32/ll_cam.c"]
+depot = "esp"
+ignore = "managed_components/\n"
+
+# Une partie du projet qu'aucune compilation ne recrée.
+[[inconnu]]
+chemin = "~/game/Assets"
+reference = "protege"
+fichiers = ["game/ProjectSettings/ProjectVersion.txt", "game/Assets/Scene.unity"]
+depot = "game"
+
+[[inconnu]]
+chemin = "~/tauri/src-tauri/binaries"
+reference = "protege"
+fichiers = ["tauri/src-tauri/tauri.conf.json", "tauri/src-tauri/binaries/sidecar"]
+depot = "tauri"
+
+# ------------------------------------------------------------ Pièges
+
+[[piege]]
+chemin = "~/trap1/.env"
+reference = "protege"
+fichiers = ["trap1/package.json", "trap1/.env"]
+depot = "trap1"
+ignore = ".env\n"
+
+[[piege]]
+chemin = "~/trap2/.env.local"
+reference = "protege"
+fichiers = ["trap2/package.json", "trap2/.env.local"]
+depot = "trap2"
+ignore = ".env.local\n"
+
+[[piege]]
+chemin = "~/trap3/local.properties"
+reference = "protege"
+fichiers = ["trap3/settings.gradle.kts", "trap3/local.properties"]
+depot = "trap3"
+ignore = "local.properties\n"
+
+[[piege]]
+chemin = "~/trap4/data.db"
+reference = "protege"
+fichiers = ["trap4/main.py", "trap4/data.db"]
+depot = "trap4"
+ignore = "*.db\n"
+
+[[piege]]
+chemin = "~/trap5/key.pem"
+reference = "protege"
+fichiers = ["trap5/main.go", "trap5/key.pem"]
+
+# ------------------------------------------------------------ Caches du dossier personnel
+
+[[cache]]
+chemin = "~/.npm"
+reference = "supprimable_en_ligne"
+fichiers = [".npm/_cacache/index"]
+
+[[cache]]
+chemin = "~/.cargo/registry"
+reference = "supprimable_en_ligne"
+fichiers = [".cargo/registry/cache/crate.crate"]
+
+[[cache]]
+chemin = "~/.gradle"
+reference = "supprimable_en_ligne"
+fichiers = [".gradle/caches/modules/x.jar"]
+
+[[cache]]
+chemin = "~/.cache"
+reference = "a_juger"
+fichiers = [".cache/misc/x"]
+
+[[cache]]
+chemin = "~/.rustup"
+reference = "a_juger"
+fichiers = [".rustup/toolchains/stable/bin/rustc"]
+
+# Les mêmes téléchargements, là où Windows les range.
+[[cache]]
+chemin = "~/AppData/Local/npm-cache"
+reference = "supprimable_en_ligne"
+fichiers = ["AppData/Local/npm-cache/_cacache/index"]
+
+[[cache]]
+chemin = "~/AppData/Local/pip/Cache"
+reference = "supprimable_en_ligne"
+fichiers = ["AppData/Local/pip/Cache/http/a"]

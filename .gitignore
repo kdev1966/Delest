@@ -1,0 +1,9 @@
+# Corpus nominatif du poste : reste local (noms de projets et de clients).
+corpus/poste-reference.toml
+__pycache__/
+target/
+.DS_Store
+
+# Produits de la construction du DMG.
+crates/delest-gui/binaries/
+crates/delest-gui/icons/icon.icns

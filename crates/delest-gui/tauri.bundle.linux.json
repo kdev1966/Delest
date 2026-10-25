@@ -1,0 +1,17 @@
+{
+  "bundle": {
+    "active": true,
+    "targets": ["deb", "appimage"],
+    "icon": ["icons/icon.png"],
+    "externalBin": ["binaries/delest"],
+    "category": "DeveloperTool",
+    "shortDescription": "Frees a developer's disk space without touching their work",
+    "longDescription": "Delest finds what can be deleted on a developer's machine without harming their work (build artefacts, dependencies, caches) and frees the space with their consent. Every verdict comes with its reasons.",
+    "copyright": "© 2026 Othman Kaabaoui, licence MIT",
+    "linux": {
+      "deb": {
+        "section": "devel"
+      }
+    }
+  }
+}

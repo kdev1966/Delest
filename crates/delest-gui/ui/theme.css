@@ -1,0 +1,105 @@
+/* Delest's front panel, in Vario's charter so the two sit side by side as one device:
+   a dark panel shading down, recessed plates, hardware keys, lit segments and lamps.
+   Delest's own colour is its blue; amber stays for what needs a look. */
+:root {
+  --panel-top: #1e1f25;
+  --panel-bottom: #121317;
+  --plate: #17181d;
+  --display: #101114;
+  --edge: #2d2f38;
+  --key: #23242b;
+  --key-hover: #2c2d36;
+  --unlit: #25262e;
+  --text: #e9eaef;
+  --soft: #c9cbd4;
+  --muted: #8a8d99;
+  --accent: #4c9fe6;
+  --online: #8cc4f2;
+  --review: #e3a23b;
+  --free: #47c08a;
+  --used: #5a5d69;
+  --danger: #e2553f;
+  /* Kept for the pages written before the charter. */
+  --bg: var(--plate);
+  --panel: var(--plate);
+  --raised: var(--key);
+  /* System faces at small sizes, as Vario: compact and sharp on every screen. */
+  --font: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  --mono: "SF Mono", Menlo, Consolas, monospace;
+  --big: 24px;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+/* Floating windows: the window itself is clear, only the rounded panel shows. */
+html, body { margin: 0; height: 100%; background: transparent; color: var(--text); font: 12px/1.4 var(--font);
+  overflow: hidden; user-select: none; -webkit-user-select: none; cursor: default; }
+input, textarea, .selectable { user-select: text; -webkit-user-select: text; }
+.panel { position: fixed; inset: 0; border-radius: 14px; border: 1px solid var(--edge);
+  background: linear-gradient(180deg, var(--panel-top), var(--panel-bottom)); overflow: hidden; }
+.logo { font-size: 17px; font-weight: 800; font-style: italic; color: var(--accent); }
+.close { position: absolute; top: 10px; right: 10px; width: 16px; height: 16px; padding: 0; border-radius: 8px; border: 0;
+  background: #2a2b33; color: var(--text); font-size: 11px; line-height: 16px; z-index: 5; }
+.close:hover { background: var(--danger); color: #ffffff; }
+[hidden] { display: none !important; }
+h1, h2, h3 { margin: 0; text-wrap: balance; }
+p { margin: 0; }
+.mono { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+.muted { color: var(--muted); }
+/* Engraved captions: small capitals, spaced. */
+.caption, .card h2 { font-size: 8px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; color: var(--muted); }
+
+/* Hardware keys: a dark key with an engraved label; the key that goes forward has a
+   blue label and edge, the one that deletes a red one. */
+button {
+  font: 600 11px var(--font); color: var(--text); background: var(--key);
+  border: 1px solid var(--edge); border-radius: 5px; padding: 0 12px; height: 26px; cursor: pointer; white-space: nowrap;
+}
+button:hover { background: var(--key-hover); }
+button:active { background: var(--plate); }
+button:focus-visible, input:focus-visible, a:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+button.primary { color: var(--accent); border-color: var(--accent); }
+button.danger { color: #ff8a76; border-color: var(--danger); }
+button:disabled { background: var(--plate); color: #474956; border-color: var(--edge); cursor: default; }
+input[type="text"] {
+  font: 12px var(--font); color: var(--text); background: var(--display); border: 1px solid var(--edge);
+  border-radius: 5px; height: 26px; padding: 0 8px; min-width: 0;
+}
+input[type="checkbox"] { width: 13px; height: 13px; accent-color: var(--accent); margin: 0; flex: none; }
+a { color: var(--accent); }
+
+/* Recessed plates. */
+.card { background: var(--plate); border: 1px solid var(--edge); border-radius: 7px; padding: 10px 12px; min-width: 0; }
+.card h2 { margin-bottom: 8px; }
+.chip { display: inline-flex; align-items: center; height: 18px; padding: 0 7px; border-radius: 4px; font-size: 9px;
+  font-weight: 700; white-space: nowrap; border: 1px solid var(--edge); background: var(--key); }
+.chip.fine { color: var(--free); border-color: #2f6b50; }
+.chip.notice { color: var(--accent); border-color: var(--accent); }
+.chip.alert { color: #ff8a76; border-color: var(--danger); }
+.swatch { display: inline-block; width: 7px; height: 7px; border-radius: 2px; flex: none; }
+/* A lamp: unlit, or lit with its glow. */
+.lamp { display: inline-block; width: 9px; height: 9px; border-radius: 50%; background: var(--unlit); flex: none; }
+
+/* Bars are rows of lit segments, as on a level meter. */
+.bar-row { display: grid; grid-template-columns: minmax(0, 120px) minmax(0, 1fr) 56px; gap: 6px 10px; align-items: center; font-size: 11px; }
+.bar-row .track, .segments { display: block; height: 9px; overflow: hidden;
+  background: repeating-linear-gradient(90deg, var(--unlit) 0 6px, transparent 6px 8px); }
+.bar-row .fill, .segments .fill { display: block; height: 100%;
+  background: repeating-linear-gradient(90deg, var(--fill, var(--accent)) 0 6px, transparent 6px 8px); }
+.bar-row .label { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.bar-row .value { text-align: right; font-family: var(--mono); font-variant-numeric: tabular-nums; font-size: 10px; }
+.message { padding: 7px 10px; border-radius: 6px; background: var(--display); border: 1px solid var(--edge); font-size: 11px; }
+.message.error { border-color: var(--danger); color: #ff9b88; }
+@media (prefers-reduced-motion: no-preference) { button { transition: background 0.12s, border-color 0.12s; } }
+/* Waiting for a model: a row of LEDs swept by a light, as a plugin's activity meter, and the seconds elapsed. */
+.thinking { display: inline-flex; align-items: center; gap: 8px; color: var(--muted); white-space: normal; }
+.thinking .leds { display: inline-flex; gap: 2px; flex: none; }
+.thinking .leds i { width: 4px; height: 10px; border-radius: 1px; background: var(--unlit); }
+.thinking .clock { font-family: var(--mono); font-variant-numeric: tabular-nums; font-size: 10px; color: var(--soft); flex: none; }
+@media (prefers-reduced-motion: no-preference) {
+  .thinking .leds i { animation: sweep 1.4s ease-in-out infinite; animation-delay: calc(var(--i) * 0.1s); }
+}
+@media (prefers-reduced-motion: reduce) { .thinking .leds i:nth-child(-n+3) { background: var(--accent); } }
+@keyframes sweep {
+  0%, 45%, 100% { background: var(--unlit); box-shadow: none; }
+  15% { background: var(--accent); box-shadow: 0 0 5px var(--accent); }
+}

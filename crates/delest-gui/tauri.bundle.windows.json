@@ -1,0 +1,17 @@
+{
+  "bundle": {
+    "active": true,
+    "targets": ["nsis"],
+    "icon": ["icons/icon.ico", "icons/icon.png"],
+    "externalBin": ["binaries/delest"],
+    "category": "DeveloperTool",
+    "shortDescription": "Frees a developer's disk space without touching their work",
+    "copyright": "© 2026 Othman Kaabaoui, licence MIT",
+    "windows": {
+      "nsis": {
+        "installMode": "currentUser",
+        "installerHooks": "windows/hooks.nsh"
+      }
+    }
+  }
+}

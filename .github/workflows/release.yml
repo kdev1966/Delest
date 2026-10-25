@@ -1,0 +1,40 @@
+name: Release
+
+# A tag v<version> builds the packages and publishes them as that version's release,
+# with its section of CHANGELOG.md as the notes.
+on:
+  push:
+    tags: ["v*"]
+
+jobs:
+  package:
+    uses: ./.github/workflows/package.yml
+
+  release:
+    needs: package
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v7
+      - name: The tag matches the version
+        run: |
+          version=$(sed -n 's/^version = "\(.*\)"/\1/p' Cargo.toml | head -1)
+          [ "${GITHUB_REF_NAME}" = "v$version" ] || { echo "tag $GITHUB_REF_NAME, Cargo.toml $version" >&2; exit 1; }
+          echo "VERSION=$version" >> "$GITHUB_ENV"
+      - name: The notes, from CHANGELOG.md
+        run: |
+          # The section, without the link references at the end of the file.
+          awk -v v="$VERSION" '$0 ~ "^## \\[" v "\\]" {on=1; next} /^## \[/ {on=0} on' CHANGELOG.md | grep -v '^\[[^]]*\]: ' > notes.md
+          [ -s notes.md ] || { echo "no section for $VERSION in CHANGELOG.md" >&2; exit 1; }
+      - uses: actions/download-artifact@v4
+        with:
+          path: packages
+          pattern: delest-*
+          merge-multiple: true
+      - name: Publish the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          find packages -type f | sort
+          gh release create "$GITHUB_REF_NAME" --title "Delest $VERSION" --notes-file notes.md $(find packages -type f)

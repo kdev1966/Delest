@@ -1,0 +1,23 @@
+[package]
+name = "delest-gui"
+description = "Delest's window: the disk, the proposals, the quarantine and the settings, without a terminal."
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+authors.workspace = true
+repository.workspace = true
+
+[dependencies]
+chrono = { version = "0.4", default-features = false, features = ["clock"] }
+delest-core = { path = "../delest-core" }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+# The private API gives transparent windows on macOS: only the rounded panel shows.
+tauri = { version = "2", features = ["tray-icon", "image-png", "macos-private-api"] }
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[lints]
+workspace = true

@@ -1,0 +1,2988 @@
+# Corpus d'acceptation de Delest, version anonymisée du poste de référence.
+# Généré par scripts/anonymiser_corpus.py ; ne pas modifier à la main.
+# Les noms propres au développeur sont remplacés par dNNN ; artefacts et pièges gardent leur nom.
+
+[[dossier]]
+chemin = "~/Desktop/d021/d140/d138/node_modules"
+categorie = "dependances"
+taille_mo = 196
+git = "non_suivi_non_ignore"
+lockfile = "package-lock.json"
+propose = "protege"
+motif = "non suivi et non ignore par git (interdit absolu)"
+reference = "protege"
+
+[[dossier]]
+chemin = "~/Desktop/d019/d152/build"
+categorie = "compilation"
+taille_mo = 38
+git = "non_suivi_non_ignore"
+dernier_commit_jours = 802
+propose = "protege"
+motif = "non suivi et non ignore par git (interdit absolu)"
+reference = "protege"
+
+[[dossier]]
+chemin = "~/Desktop/d021/d031/d166/d165/node_modules"
+categorie = "dependances"
+taille_mo = 25
+git = "suivi (7264 fichiers)"
+lockfile = "package-lock.json"
+dernier_commit_jours = 1436
+propose = "protege"
+motif = "contient des fichiers suivis par git"
+reference = "protege"
+
+[[dossier]]
+chemin = "~/Desktop/d019/d167/android/.gradle"
+categorie = "compilation"
+taille_mo = 2
+git = "non_suivi_non_ignore"
+dernier_commit_jours = 786
+propose = "protege"
+motif = "non suivi et non ignore par git (interdit absolu)"
+reference = "protege"
+
+[[dossier]]
+chemin = "~/Desktop/d019/d152/android/.gradle"
+categorie = "compilation"
+taille_mo = 2
+git = "non_suivi_non_ignore"
+dernier_commit_jours = 802
+propose = "protege"
+motif = "non suivi et non ignore par git (interdit absolu)"
+reference = "protege"
+
+[[dossier]]
+chemin = "~/Desktop/d035/d174/build"
+categorie = "compilation"
+taille_mo = 1
+git = "non_suivi_non_ignore"
+dernier_commit_jours = 70
+propose = "protege"
+motif = "non suivi et non ignore par git (interdit absolu)"
+reference = "protege"
+
+[[dossier]]
+chemin = "~/Desktop/d021/d149/build"
+categorie = "compilation"
+taille_mo = 1
+git = "suivi (16 fichiers)"
+dernier_commit_jours = 326
+propose = "protege"
+motif = "contient des fichiers suivis par git"
+reference = "protege"
+
+[[dossier]]
+chemin = "~/Desktop/d049/d183/d058/__pycache__"
+categorie = "compilation"
+taille_mo = 0
+git = "non_suivi_non_ignore"
+dernier_commit_jours = 40
+propose = "protege"
+motif = "non suivi et non ignore par git (interdit absolu)"
+reference = "protege"
+
+[[dossier]]
+chemin = "~/Desktop/d049/d183/d056/__pycache__"
+categorie = "compilation"
+taille_mo = 0
+git = "non_suivi_non_ignore"
+dernier_commit_jours = 40
+propose = "protege"
+motif = "non suivi et non ignore par git (interdit absolu)"
+reference = "protege"
+
+[[dossier]]
+chemin = "~/Desktop/d049/d183/d050/__pycache__"
+categorie = "compilation"
+taille_mo = 0
+git = "non_suivi_non_ignore"
+dernier_commit_jours = 40
+propose = "protege"
+motif = "non suivi et non ignore par git (interdit absolu)"
+reference = "protege"
+
+[[dossier]]
+chemin = "~/Desktop/d035/d102/d102/__pycache__"
+categorie = "compilation"
+taille_mo = 0
+git = "non_suivi_non_ignore"
+dernier_commit_jours = 748
+propose = "protege"
+motif = "non suivi et non ignore par git (interdit absolu)"
+reference = "protege"
+
+[[dossier]]
+chemin = "~/Desktop/d021/d140/d138/dist"
+categorie = "compilation"
+taille_mo = 0
+git = "non_suivi_non_ignore"
+propose = "protege"
+motif = "non suivi et non ignore par git (interdit absolu)"
+reference = "protege"
+
+[[dossier]]
+chemin = "~/Desktop/d021/d031/d147/node_modules"
+categorie = "dependances"
+taille_mo = 0
+git = "non_suivi_non_ignore"
+lockfile = "package-lock.json"
+dernier_commit_jours = 1422
+propose = "protege"
+motif = "non suivi et non ignore par git (interdit absolu)"
+reference = "protege"
+
+[[dossier]]
+chemin = "~/Desktop/d021/d124/d120/backend/.cache"
+categorie = "compilation"
+taille_mo = 0
+git = "non_suivi_non_ignore"
+dernier_commit_jours = 46
+propose = "protege"
+motif = "non suivi et non ignore par git (interdit absolu)"
+reference = "protege"
+
+[[dossier]]
+chemin = "~/Desktop/d035/d102/d102/d154/__pycache__"
+categorie = "compilation"
+taille_mo = 0
+git = "non_suivi_non_ignore"
+dernier_commit_jours = 748
+propose = "protege"
+motif = "non suivi et non ignore par git (interdit absolu)"
+reference = "protege"
+
+[[dossier]]
+chemin = "~/Desktop/d035/d102/d102/d114/__pycache__"
+categorie = "compilation"
+taille_mo = 0
+git = "non_suivi_non_ignore"
+dernier_commit_jours = 748
+propose = "protege"
+motif = "non suivi et non ignore par git (interdit absolu)"
+reference = "protege"
+
+[[dossier]]
+chemin = "~/Desktop/d035/d102/d102/d179/__pycache__"
+categorie = "compilation"
+taille_mo = 0
+git = "non_suivi_non_ignore"
+dernier_commit_jours = 748
+propose = "protege"
+motif = "non suivi et non ignore par git (interdit absolu)"
+reference = "protege"
+
+[[dossier]]
+chemin = "~/Desktop/d019/d169/build"
+categorie = "compilation"
+taille_mo = 1767
+git = "hors_git"
+propose = "a_juger"
+motif = "hors git : rien ne confirme que c'est un artefact"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d021/d161/d105/build"
+categorie = "compilation"
+taille_mo = 916
+git = "hors_git"
+propose = "a_juger"
+motif = "hors git : rien ne confirme que c'est un artefact"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d046/d132/build"
+categorie = "compilation"
+taille_mo = 581
+git = "hors_git"
+propose = "a_juger"
+motif = "hors git : rien ne confirme que c'est un artefact"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d019/d173/build"
+categorie = "compilation"
+taille_mo = 472
+git = "hors_git"
+propose = "a_juger"
+motif = "hors git : rien ne confirme que c'est un artefact"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d035/d172/.venv"
+categorie = "dependances"
+taille_mo = 464
+git = "ignore"
+dernier_commit_jours = 14
+propose = "a_juger"
+motif = "aucun lockfile"
+reference = "a_juger"
+
+[[dossier]]
+chemin = "~/Desktop/d019/d155/build"
+categorie = "compilation"
+taille_mo = 457
+git = "hors_git"
+propose = "a_juger"
+motif = "hors git : rien ne confirme que c'est un artefact"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d019/d148/build"
+categorie = "compilation"
+taille_mo = 414
+git = "hors_git"
+propose = "a_juger"
+motif = "hors git : rien ne confirme que c'est un artefact"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d019/d082/build"
+categorie = "compilation"
+taille_mo = 334
+git = "hors_git"
+propose = "a_juger"
+motif = "hors git : rien ne confirme que c'est un artefact"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d035/d088/apps/d085/.venv"
+categorie = "dependances"
+taille_mo = 268
+git = "ignore"
+dernier_commit_jours = 54
+propose = "a_juger"
+motif = "aucun lockfile"
+reference = "a_juger"
+
+[[dossier]]
+chemin = "~/Desktop/d118/apps/d067/.venv"
+categorie = "dependances"
+taille_mo = 261
+git = "ignore"
+lockfile = "requirements.txt"
+dernier_commit_jours = 27
+propose = "a_juger"
+motif = "requirements.txt seul : reconstruction pas forcement a l'identique"
+reference = "a_juger"
+
+[[dossier]]
+chemin = "~/Desktop/d035/d088/packages/d087/.venv"
+categorie = "dependances"
+taille_mo = 209
+git = "ignore"
+dernier_commit_jours = 54
+propose = "a_juger"
+motif = "aucun lockfile"
+reference = "a_juger"
+
+[[dossier]]
+chemin = "~/Desktop/d041/d015/d170/.venv"
+categorie = "dependances"
+taille_mo = 202
+git = "hors_git"
+propose = "a_juger"
+motif = "aucun lockfile"
+reference = "a_juger"
+
+[[dossier]]
+chemin = "~/Desktop/d035/d073/d063/venv"
+categorie = "dependances"
+taille_mo = 179
+git = "ignore"
+lockfile = "requirements.txt"
+dernier_commit_jours = 349
+propose = "a_juger"
+motif = "requirements.txt seul : reconstruction pas forcement a l'identique"
+reference = "a_juger"
+
+[[dossier]]
+chemin = "~/Desktop/d023/.venv"
+categorie = "dependances"
+taille_mo = 109
+git = "ignore"
+dernier_commit_jours = 0
+propose = "a_juger"
+motif = "aucun lockfile"
+reference = "a_juger"
+
+[[dossier]]
+chemin = "~/Desktop/d011/.venv"
+categorie = "dependances"
+taille_mo = 104
+git = "ignore"
+dernier_commit_jours = 5
+propose = "a_juger"
+motif = "aucun lockfile"
+reference = "a_juger"
+
+[[dossier]]
+chemin = "~/Desktop/d035/d088/apps/d086/.venv"
+categorie = "dependances"
+taille_mo = 78
+git = "ignore"
+dernier_commit_jours = 54
+propose = "a_juger"
+motif = "aucun lockfile"
+reference = "a_juger"
+
+[[dossier]]
+chemin = "~/Desktop/d035/d174/.venv"
+categorie = "dependances"
+taille_mo = 70
+git = "ignore"
+dernier_commit_jours = 70
+propose = "a_juger"
+motif = "aucun lockfile"
+reference = "a_juger"
+
+[[dossier]]
+chemin = "~/Desktop/d049/d183/d058/venv"
+categorie = "dependances"
+taille_mo = 55
+git = "ignore"
+dernier_commit_jours = 40
+propose = "a_juger"
+motif = "aucun lockfile"
+reference = "a_juger"
+
+[[dossier]]
+chemin = "~/Desktop/d041/d015/d170/d074/.venv"
+categorie = "dependances"
+taille_mo = 28
+git = "hors_git"
+propose = "a_juger"
+motif = "aucun lockfile"
+reference = "a_juger"
+
+[[dossier]]
+chemin = "~/Desktop/d041/d015/d170/d075/.venv"
+categorie = "dependances"
+taille_mo = 28
+git = "hors_git"
+propose = "a_juger"
+motif = "aucun lockfile"
+reference = "a_juger"
+
+[[dossier]]
+chemin = "~/Desktop/d041/d017/build"
+categorie = "compilation"
+taille_mo = 20
+git = "hors_git"
+propose = "a_juger"
+motif = "hors git : rien ne confirme que c'est un artefact"
+reference = "a_juger"
+
+[[dossier]]
+chemin = "~/Desktop/d035/d025/d136/.venv"
+categorie = "dependances"
+taille_mo = 15
+git = "hors_git"
+lockfile = "requirements.txt"
+propose = "a_juger"
+motif = "requirements.txt seul : reconstruction pas forcement a l'identique"
+reference = "a_juger"
+
+[[dossier]]
+chemin = "~/Desktop/d041/d015/d170/d075/build"
+categorie = "compilation"
+taille_mo = 15
+git = "hors_git"
+propose = "a_juger"
+motif = "hors git : rien ne confirme que c'est un artefact"
+reference = "a_juger"
+
+[[dossier]]
+chemin = "~/Desktop/d041/d015/d170/d074/build"
+categorie = "compilation"
+taille_mo = 4
+git = "hors_git"
+propose = "a_juger"
+motif = "hors git : rien ne confirme que c'est un artefact"
+reference = "a_juger"
+
+[[dossier]]
+chemin = "~/Desktop/d035/d045/build"
+categorie = "compilation"
+taille_mo = 1
+git = "hors_git"
+propose = "a_juger"
+motif = "hors git : rien ne confirme que c'est un artefact"
+reference = "a_juger"
+
+[[dossier]]
+chemin = "~/Desktop/d021/d161/backend/dist"
+categorie = "compilation"
+taille_mo = 1
+git = "hors_git"
+propose = "a_juger"
+motif = "hors git : rien ne confirme que c'est un artefact"
+reference = "a_juger"
+
+[[dossier]]
+chemin = "~/Desktop/d021/d104/backend/dist"
+categorie = "compilation"
+taille_mo = 1
+git = "hors_git"
+propose = "a_juger"
+motif = "hors git : rien ne confirme que c'est un artefact"
+reference = "a_juger"
+
+[[dossier]]
+chemin = "~/Desktop/d035/d045/dist"
+categorie = "compilation"
+taille_mo = 0
+git = "hors_git"
+propose = "a_juger"
+motif = "hors git : rien ne confirme que c'est un artefact"
+reference = "a_juger"
+
+[[dossier]]
+chemin = "~/Desktop/d020/d169/build"
+categorie = "compilation"
+taille_mo = 0
+git = "hors_git"
+propose = "a_juger"
+motif = "hors git : rien ne confirme que c'est un artefact"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d021/d110/dist"
+categorie = "compilation"
+taille_mo = 0
+git = "hors_git"
+propose = "a_juger"
+motif = "hors git : rien ne confirme que c'est un artefact"
+reference = "a_juger"
+
+[[dossier]]
+chemin = "~/Desktop/d021/d140/d171/dist"
+categorie = "compilation"
+taille_mo = 0
+git = "hors_git"
+propose = "a_juger"
+motif = "hors git : rien ne confirme que c'est un artefact"
+reference = "a_juger"
+
+[[dossier]]
+chemin = "~/Desktop/d021/d140/d139/dist"
+categorie = "compilation"
+taille_mo = 0
+git = "hors_git"
+propose = "a_juger"
+motif = "hors git : rien ne confirme que c'est un artefact"
+reference = "a_juger"
+
+[[dossier]]
+chemin = "~/Desktop/d013/d146/node_modules"
+categorie = "dependances"
+taille_mo = 1228
+git = "ignore"
+lockfile = "pnpm-lock.yaml"
+dernier_commit_jours = 66
+propose = "supprimable_en_ligne"
+motif = "lockfile pnpm-lock.yaml"
+reference = "supprimable_en_ligne"
+
+[[dossier]]
+chemin = "~/Desktop/d021/d116/node_modules"
+categorie = "dependances"
+taille_mo = 433
+git = "ignore"
+lockfile = "pnpm-lock.yaml"
+dernier_commit_jours = 84
+propose = "supprimable_en_ligne"
+motif = "lockfile pnpm-lock.yaml"
+reference = "supprimable_en_ligne"
+
+[[dossier]]
+chemin = "~/Desktop/d035/d172/apps/web/node_modules"
+categorie = "dependances"
+taille_mo = 286
+git = "ignore"
+lockfile = "pnpm-lock.yaml"
+dernier_commit_jours = 14
+propose = "supprimable_en_ligne"
+motif = "lockfile pnpm-lock.yaml"
+reference = "supprimable_en_ligne"
+
+[[dossier]]
+chemin = "~/Desktop/d069/node_modules"
+categorie = "dependances"
+taille_mo = 223
+git = "ignore"
+lockfile = "package-lock.json"
+dernier_commit_jours = 45
+propose = "supprimable_en_ligne"
+motif = "lockfile package-lock.json"
+reference = "supprimable_en_ligne"
+
+[[dossier]]
+chemin = "~/Desktop/d021/d016/node_modules"
+categorie = "dependances"
+taille_mo = 196
+git = "ignore"
+lockfile = "package-lock.json"
+dernier_commit_jours = 42
+propose = "supprimable_en_ligne"
+motif = "lockfile package-lock.json"
+reference = "supprimable_en_ligne"
+
+[[dossier]]
+chemin = "~/Desktop/d021/d140/d171/node_modules"
+categorie = "dependances"
+taille_mo = 174
+git = "hors_git"
+lockfile = "package-lock.json"
+propose = "supprimable_en_ligne"
+motif = "lockfile package-lock.json"
+reference = "supprimable_en_ligne"
+
+[[dossier]]
+chemin = "~/Desktop/d011/apps/web/node_modules"
+categorie = "dependances"
+taille_mo = 126
+git = "ignore"
+lockfile = "pnpm-lock.yaml"
+dernier_commit_jours = 5
+propose = "supprimable_en_ligne"
+motif = "lockfile pnpm-lock.yaml"
+reference = "supprimable_en_ligne"
+
+[[dossier]]
+chemin = "~/Desktop/d118/apps/web/node_modules"
+categorie = "dependances"
+taille_mo = 109
+git = "ignore"
+lockfile = "package-lock.json"
+dernier_commit_jours = 27
+propose = "supprimable_en_ligne"
+motif = "lockfile package-lock.json"
+reference = "supprimable_en_ligne"
+
+[[dossier]]
+chemin = "~/Desktop/d118/apps/d051/node_modules"
+categorie = "dependances"
+taille_mo = 109
+git = "ignore"
+lockfile = "package-lock.json"
+dernier_commit_jours = 27
+propose = "supprimable_en_ligne"
+motif = "lockfile package-lock.json"
+reference = "supprimable_en_ligne"
+
+[[dossier]]
+chemin = "~/Desktop/d021/d124/d120/d089/node_modules"
+categorie = "dependances"
+taille_mo = 91
+git = "ignore"
+lockfile = "package-lock.json"
+dernier_commit_jours = 46
+propose = "supprimable_en_ligne"
+motif = "lockfile package-lock.json"
+reference = "supprimable_en_ligne"
+
+[[dossier]]
+chemin = "~/Desktop/d021/d124/d120/frontend/node_modules"
+categorie = "dependances"
+taille_mo = 91
+git = "ignore"
+lockfile = "package-lock.json"
+dernier_commit_jours = 46
+propose = "supprimable_en_ligne"
+motif = "lockfile package-lock.json"
+reference = "supprimable_en_ligne"
+
+[[dossier]]
+chemin = "~/Desktop/d021/d110/node_modules"
+categorie = "dependances"
+taille_mo = 90
+git = "hors_git"
+lockfile = "package-lock.json"
+propose = "supprimable_en_ligne"
+motif = "lockfile package-lock.json"
+reference = "supprimable_en_ligne"
+
+[[dossier]]
+chemin = "~/Desktop/d021/d076/d077/frontend/node_modules"
+categorie = "dependances"
+taille_mo = 73
+git = "ignore"
+lockfile = "package-lock.json"
+dernier_commit_jours = 41
+propose = "supprimable_en_ligne"
+motif = "lockfile package-lock.json"
+reference = "supprimable_en_ligne"
+
+[[dossier]]
+chemin = "~/Desktop/d021/d048/web/node_modules"
+categorie = "dependances"
+taille_mo = 38
+git = "ignore"
+lockfile = "package-lock.json"
+dernier_commit_jours = 63
+propose = "supprimable_en_ligne"
+motif = "lockfile package-lock.json"
+reference = "supprimable_en_ligne"
+
+[[dossier]]
+chemin = "~/Desktop/d021/d124/d120/node_modules"
+categorie = "dependances"
+taille_mo = 13
+git = "ignore"
+lockfile = "package-lock.json"
+dernier_commit_jours = 46
+propose = "supprimable_en_ligne"
+motif = "lockfile package-lock.json"
+reference = "supprimable_en_ligne"
+
+[[dossier]]
+chemin = "~/Desktop/d021/d140/d139/node_modules"
+categorie = "dependances"
+taille_mo = 12
+git = "hors_git"
+lockfile = "package-lock.json"
+propose = "supprimable_en_ligne"
+motif = "lockfile package-lock.json"
+reference = "supprimable_en_ligne"
+
+[[dossier]]
+chemin = "~/Desktop/d013/d146/apps/d142/node_modules"
+categorie = "dependances"
+taille_mo = 11
+git = "ignore"
+lockfile = "../../pnpm-lock.yaml"
+dernier_commit_jours = 66
+propose = "supprimable_en_ligne"
+motif = "lockfile ../../pnpm-lock.yaml"
+reference = "supprimable_en_ligne"
+
+[[dossier]]
+chemin = "~/Desktop/d021/d116/apps/web/node_modules"
+categorie = "dependances"
+taille_mo = 2
+git = "ignore"
+lockfile = "../../pnpm-lock.yaml"
+dernier_commit_jours = 84
+propose = "supprimable_en_ligne"
+motif = "lockfile ../../pnpm-lock.yaml"
+reference = "supprimable_en_ligne"
+
+[[dossier]]
+chemin = "~/Desktop/d019/d169/d126/Pods"
+categorie = "dependances"
+taille_mo = 0
+git = "hors_git"
+lockfile = "Podfile.lock"
+propose = "supprimable_en_ligne"
+motif = "lockfile Podfile.lock"
+reference = "supprimable_en_ligne"
+
+[[dossier]]
+chemin = "~/Desktop/d019/d151/d126/Pods"
+categorie = "dependances"
+taille_mo = 0
+git = "ignore"
+lockfile = "Podfile.lock"
+dernier_commit_jours = 384
+propose = "supprimable_en_ligne"
+motif = "lockfile Podfile.lock"
+reference = "supprimable_en_ligne"
+
+[[dossier]]
+chemin = "~/Desktop/d013/d146/apps/d144/node_modules"
+categorie = "dependances"
+taille_mo = 0
+git = "ignore"
+lockfile = "../../pnpm-lock.yaml"
+dernier_commit_jours = 66
+propose = "supprimable_en_ligne"
+motif = "lockfile ../../pnpm-lock.yaml"
+reference = "supprimable_en_ligne"
+
+[[dossier]]
+chemin = "~/Desktop/d013/d146/apps/d141/node_modules"
+categorie = "dependances"
+taille_mo = 0
+git = "ignore"
+lockfile = "../../pnpm-lock.yaml"
+dernier_commit_jours = 66
+propose = "supprimable_en_ligne"
+motif = "lockfile ../../pnpm-lock.yaml"
+reference = "supprimable_en_ligne"
+
+[[dossier]]
+chemin = "~/Desktop/d013/d146/apps/d143/node_modules"
+categorie = "dependances"
+taille_mo = 0
+git = "ignore"
+lockfile = "../../pnpm-lock.yaml"
+dernier_commit_jours = 66
+propose = "supprimable_en_ligne"
+motif = "lockfile ../../pnpm-lock.yaml"
+reference = "supprimable_en_ligne"
+
+[[dossier]]
+chemin = "~/Desktop/d013/d055/apps/d054/node_modules"
+categorie = "dependances"
+taille_mo = 0
+git = "ignore"
+lockfile = "../../pnpm-lock.yaml"
+dernier_commit_jours = 100
+propose = "supprimable_en_ligne"
+motif = "lockfile ../../pnpm-lock.yaml"
+reference = "supprimable_en_ligne"
+
+[[dossier]]
+chemin = "~/Desktop/d013/d055/apps/d052/node_modules"
+categorie = "dependances"
+taille_mo = 0
+git = "ignore"
+lockfile = "../../pnpm-lock.yaml"
+dernier_commit_jours = 100
+propose = "supprimable_en_ligne"
+motif = "lockfile ../../pnpm-lock.yaml"
+reference = "supprimable_en_ligne"
+
+[[dossier]]
+chemin = "~/Desktop/d013/d055/apps/d053/node_modules"
+categorie = "dependances"
+taille_mo = 0
+git = "ignore"
+lockfile = "../../pnpm-lock.yaml"
+dernier_commit_jours = 100
+propose = "supprimable_en_ligne"
+motif = "lockfile ../../pnpm-lock.yaml"
+reference = "supprimable_en_ligne"
+
+[[dossier]]
+chemin = "~/Desktop/d021/d116/apps/api/node_modules"
+categorie = "dependances"
+taille_mo = 0
+git = "ignore"
+lockfile = "../../pnpm-lock.yaml"
+dernier_commit_jours = 84
+propose = "supprimable_en_ligne"
+motif = "lockfile ../../pnpm-lock.yaml"
+reference = "supprimable_en_ligne"
+
+[[dossier]]
+chemin = "~/Desktop/d021/d116/packages/d168/node_modules"
+categorie = "dependances"
+taille_mo = 0
+git = "ignore"
+lockfile = "../../pnpm-lock.yaml"
+dernier_commit_jours = 84
+propose = "supprimable_en_ligne"
+motif = "lockfile ../../pnpm-lock.yaml"
+reference = "supprimable_en_ligne"
+
+[[dossier]]
+chemin = "~/Desktop/d047/target"
+categorie = "compilation"
+taille_mo = 14409
+git = "ignore"
+dernier_commit_jours = 0
+propose = "supprimable"
+motif = "artefact de compilation ignore par git"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d021/d016/target"
+categorie = "compilation"
+taille_mo = 6206
+git = "ignore"
+dernier_commit_jours = 42
+propose = "supprimable"
+motif = "artefact de compilation ignore par git"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d069/src-tauri/target"
+categorie = "compilation"
+taille_mo = 5181
+git = "ignore"
+dernier_commit_jours = 45
+propose = "supprimable"
+motif = "artefact de compilation ignore par git"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d029/d010/app/build"
+categorie = "compilation"
+taille_mo = 3640
+git = "ignore"
+dernier_commit_jours = 1
+propose = "supprimable"
+motif = "artefact de compilation ignore par git"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d019/d151/build"
+categorie = "compilation"
+taille_mo = 1676
+git = "ignore"
+dernier_commit_jours = 384
+propose = "supprimable"
+motif = "artefact de compilation ignore par git"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d049/d027/mobile/app/build"
+categorie = "compilation"
+taille_mo = 778
+git = "ignore"
+dernier_commit_jours = 5
+propose = "supprimable"
+motif = "artefact de compilation ignore par git"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d035/d172/apps/web/.next"
+categorie = "compilation"
+taille_mo = 578
+git = "ignore"
+dernier_commit_jours = 14
+propose = "supprimable"
+motif = "artefact de compilation ignore par git"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d019/d167/build"
+categorie = "compilation"
+taille_mo = 506
+git = "ignore"
+dernier_commit_jours = 786
+propose = "supprimable"
+motif = "artefact de compilation ignore par git"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d049/d026/app/build"
+categorie = "compilation"
+taille_mo = 482
+git = "ignore"
+dernier_commit_jours = 37
+propose = "supprimable"
+motif = "artefact de compilation ignore par git"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d021/d122/web/.next"
+categorie = "compilation"
+taille_mo = 412
+git = "ignore"
+dernier_commit_jours = 406
+propose = "supprimable"
+motif = "artefact de compilation ignore par git"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d021/d060/frontend/.next"
+categorie = "compilation"
+taille_mo = 392
+git = "ignore"
+dernier_commit_jours = 322
+propose = "supprimable"
+motif = "artefact de compilation ignore par git"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d049/d183/build"
+categorie = "compilation"
+taille_mo = 374
+git = "ignore"
+dernier_commit_jours = 40
+propose = "supprimable"
+motif = "artefact de compilation ignore par git"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d013/d055/.turbo"
+categorie = "compilation"
+taille_mo = 354
+git = "ignore"
+dernier_commit_jours = 100
+propose = "supprimable"
+motif = "artefact de compilation ignore par git"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d022/d115/.next"
+categorie = "compilation"
+taille_mo = 321
+git = "ignore"
+dernier_commit_jours = 334
+propose = "supprimable"
+motif = "artefact de compilation ignore par git"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d019/d184/build"
+categorie = "compilation"
+taille_mo = 320
+git = "ignore"
+dernier_commit_jours = 786
+propose = "supprimable"
+motif = "artefact de compilation ignore par git"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d013/d145/.turbo"
+categorie = "compilation"
+taille_mo = 247
+git = "ignore"
+dernier_commit_jours = 90
+propose = "supprimable"
+motif = "artefact de compilation ignore par git"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d106/d059/frontend/.next"
+categorie = "compilation"
+taille_mo = 154
+git = "ignore"
+dernier_commit_jours = 359
+propose = "supprimable"
+motif = "artefact de compilation ignore par git"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d021/d161/frontend/.next"
+categorie = "compilation"
+taille_mo = 127
+git = "hors_git"
+propose = "supprimable"
+motif = "artefact de compilation (hors git)"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d021/d160/frontend/.next"
+categorie = "compilation"
+taille_mo = 121
+git = "ignore"
+dernier_commit_jours = 453
+propose = "supprimable"
+motif = "artefact de compilation ignore par git"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d013/d146/apps/d143/.next"
+categorie = "compilation"
+taille_mo = 95
+git = "ignore"
+dernier_commit_jours = 66
+propose = "supprimable"
+motif = "artefact de compilation ignore par git"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d021/d104/frontend/.next"
+categorie = "compilation"
+taille_mo = 94
+git = "hors_git"
+propose = "supprimable"
+motif = "artefact de compilation (hors git)"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d013/d146/.turbo"
+categorie = "compilation"
+taille_mo = 92
+git = "ignore"
+dernier_commit_jours = 66
+propose = "supprimable"
+motif = "artefact de compilation ignore par git"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d013/d146/apps/d144/.next"
+categorie = "compilation"
+taille_mo = 90
+git = "ignore"
+dernier_commit_jours = 66
+propose = "supprimable"
+motif = "artefact de compilation ignore par git"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d013/d055/apps/d054/.next"
+categorie = "compilation"
+taille_mo = 74
+git = "ignore"
+dernier_commit_jours = 100
+propose = "supprimable"
+motif = "artefact de compilation ignore par git"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d013/d055/apps/d053/.next"
+categorie = "compilation"
+taille_mo = 67
+git = "ignore"
+dernier_commit_jours = 100
+propose = "supprimable"
+motif = "artefact de compilation ignore par git"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d021/d140/d157/frontend/.next"
+categorie = "compilation"
+taille_mo = 57
+git = "ignore"
+dernier_commit_jours = 353
+propose = "supprimable"
+motif = "artefact de compilation ignore par git"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d013/d146/apps/d141/.next"
+categorie = "compilation"
+taille_mo = 53
+git = "ignore"
+dernier_commit_jours = 66
+propose = "supprimable"
+motif = "artefact de compilation ignore par git"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d021/d116/apps/api/dist"
+categorie = "compilation"
+taille_mo = 26
+git = "ignore"
+dernier_commit_jours = 84
+propose = "supprimable"
+motif = "artefact de compilation ignore par git"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d047/dist"
+categorie = "compilation"
+taille_mo = 18
+git = "ignore"
+dernier_commit_jours = 0
+propose = "supprimable"
+motif = "artefact de compilation ignore par git"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d029/d010/.gradle"
+categorie = "compilation"
+taille_mo = 17
+git = "ignore"
+dernier_commit_jours = 1
+propose = "supprimable"
+motif = "artefact de compilation ignore par git"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d049/d027/mobile/.gradle"
+categorie = "compilation"
+taille_mo = 17
+git = "ignore"
+dernier_commit_jours = 5
+propose = "supprimable"
+motif = "artefact de compilation ignore par git"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d019/d151/android/.gradle"
+categorie = "compilation"
+taille_mo = 16
+git = "ignore"
+dernier_commit_jours = 384
+propose = "supprimable"
+motif = "artefact de compilation ignore par git"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d019/d184/android/.gradle"
+categorie = "compilation"
+taille_mo = 9
+git = "ignore"
+dernier_commit_jours = 786
+propose = "supprimable"
+motif = "artefact de compilation ignore par git"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d019/d169/android/.gradle"
+categorie = "compilation"
+taille_mo = 7
+git = "hors_git"
+propose = "supprimable"
+motif = "artefact de compilation (hors git)"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d021/d161/d105/android/.gradle"
+categorie = "compilation"
+taille_mo = 7
+git = "hors_git"
+propose = "supprimable"
+motif = "artefact de compilation (hors git)"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d049/d119/app/build"
+categorie = "compilation"
+taille_mo = 6
+git = "ignore"
+dernier_commit_jours = 42
+propose = "supprimable"
+motif = "artefact de compilation ignore par git"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d019/d148/android/.gradle"
+categorie = "compilation"
+taille_mo = 6
+git = "hors_git"
+propose = "supprimable"
+motif = "artefact de compilation (hors git)"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d013/d146/apps/d142/dist"
+categorie = "compilation"
+taille_mo = 6
+git = "ignore"
+dernier_commit_jours = 66
+propose = "supprimable"
+motif = "artefact de compilation ignore par git"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d021/d108/d150/frontend/dist"
+categorie = "compilation"
+taille_mo = 6
+git = "ignore"
+dernier_commit_jours = 325
+propose = "supprimable"
+motif = "artefact de compilation ignore par git"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d021/d016/dist"
+categorie = "compilation"
+taille_mo = 4
+git = "ignore"
+dernier_commit_jours = 42
+propose = "supprimable"
+motif = "artefact de compilation ignore par git"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d035/d073/d107/dist"
+categorie = "compilation"
+taille_mo = 4
+git = "ignore"
+dernier_commit_jours = 349
+propose = "supprimable"
+motif = "artefact de compilation ignore par git"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d013/d055/apps/d052/dist"
+categorie = "compilation"
+taille_mo = 4
+git = "ignore"
+dernier_commit_jours = 100
+propose = "supprimable"
+motif = "artefact de compilation ignore par git"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d069/dist"
+categorie = "compilation"
+taille_mo = 3
+git = "ignore"
+dernier_commit_jours = 45
+propose = "supprimable"
+motif = "artefact de compilation ignore par git"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d035/d072/frontend/dist"
+categorie = "compilation"
+taille_mo = 3
+git = "ignore"
+dernier_commit_jours = 351
+propose = "supprimable"
+motif = "artefact de compilation ignore par git"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d021/d122/api/dist"
+categorie = "compilation"
+taille_mo = 3
+git = "ignore"
+dernier_commit_jours = 406
+propose = "supprimable"
+motif = "artefact de compilation ignore par git"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d021/d103/backend/dist"
+categorie = "compilation"
+taille_mo = 3
+git = "ignore"
+dernier_commit_jours = 270
+propose = "supprimable"
+motif = "artefact de compilation ignore par git"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d049/d026/.gradle"
+categorie = "compilation"
+taille_mo = 2
+git = "ignore"
+dernier_commit_jours = 37
+propose = "supprimable"
+motif = "artefact de compilation ignore par git"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d021/d064/d127/dist"
+categorie = "compilation"
+taille_mo = 2
+git = "ignore"
+dernier_commit_jours = 395
+propose = "supprimable"
+motif = "artefact de compilation ignore par git"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d021/d140/d157/backend/dist"
+categorie = "compilation"
+taille_mo = 2
+git = "ignore"
+dernier_commit_jours = 353
+propose = "supprimable"
+motif = "artefact de compilation ignore par git"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d021/d149/dist"
+categorie = "compilation"
+taille_mo = 1
+git = "ignore"
+dernier_commit_jours = 326
+propose = "supprimable"
+motif = "artefact de compilation ignore par git"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d023/tests/__pycache__"
+categorie = "compilation"
+taille_mo = 1
+git = "ignore"
+dernier_commit_jours = 0
+propose = "supprimable"
+motif = "bytecode Python regenere a l'execution"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d011/tests/__pycache__"
+categorie = "compilation"
+taille_mo = 1
+git = "ignore"
+dernier_commit_jours = 5
+propose = "supprimable"
+motif = "bytecode Python regenere a l'execution"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d035/d128/frontend/dist"
+categorie = "compilation"
+taille_mo = 1
+git = "ignore"
+dernier_commit_jours = 357
+propose = "supprimable"
+motif = "artefact de compilation ignore par git"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d035/d172/tests/__pycache__"
+categorie = "compilation"
+taille_mo = 1
+git = "ignore"
+dernier_commit_jours = 14
+propose = "supprimable"
+motif = "bytecode Python regenere a l'execution"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d035/d176/d176/dist"
+categorie = "compilation"
+taille_mo = 1
+git = "ignore"
+dernier_commit_jours = 349
+propose = "supprimable"
+motif = "artefact de compilation ignore par git"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d021/d150/frontend/dist"
+categorie = "compilation"
+taille_mo = 1
+git = "ignore"
+dernier_commit_jours = 324
+propose = "supprimable"
+motif = "artefact de compilation ignore par git"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d021/d160/backend/dist"
+categorie = "compilation"
+taille_mo = 1
+git = "ignore"
+dernier_commit_jours = 453
+propose = "supprimable"
+motif = "artefact de compilation ignore par git"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d021/d103/d121/dist"
+categorie = "compilation"
+taille_mo = 1
+git = "ignore"
+dernier_commit_jours = 270
+propose = "supprimable"
+motif = "artefact de compilation ignore par git"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d021/d103/frontend/dist"
+categorie = "compilation"
+taille_mo = 1
+git = "ignore"
+dernier_commit_jours = 270
+propose = "supprimable"
+motif = "artefact de compilation ignore par git"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d019/d082/android/.gradle"
+categorie = "compilation"
+taille_mo = 1
+git = "hors_git"
+propose = "supprimable"
+motif = "artefact de compilation (hors git)"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d019/d173/android/.gradle"
+categorie = "compilation"
+taille_mo = 1
+git = "hors_git"
+propose = "supprimable"
+motif = "artefact de compilation (hors git)"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d019/d155/android/.gradle"
+categorie = "compilation"
+taille_mo = 1
+git = "hors_git"
+propose = "supprimable"
+motif = "artefact de compilation (hors git)"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d035/d131/apps/web/.next"
+categorie = "compilation"
+taille_mo = 1
+git = "hors_git"
+propose = "supprimable"
+motif = "artefact de compilation (hors git)"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d118/apps/d067/tests/__pycache__"
+categorie = "compilation"
+taille_mo = 1
+git = "ignore"
+dernier_commit_jours = 27
+propose = "supprimable"
+motif = "bytecode Python regenere a l'execution"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d118/apps/d067/d067/__pycache__"
+categorie = "compilation"
+taille_mo = 1
+git = "ignore"
+dernier_commit_jours = 27
+propose = "supprimable"
+motif = "bytecode Python regenere a l'execution"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d029/d010/build"
+categorie = "compilation"
+taille_mo = 0
+git = "ignore"
+dernier_commit_jours = 1
+propose = "supprimable"
+motif = "artefact de compilation ignore par git"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d049/d119/.gradle"
+categorie = "compilation"
+taille_mo = 0
+git = "ignore"
+dernier_commit_jours = 42
+propose = "supprimable"
+motif = "artefact de compilation ignore par git"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d111/tests/__pycache__"
+categorie = "compilation"
+taille_mo = 0
+git = "hors_git"
+propose = "supprimable"
+motif = "bytecode Python regenere a l'execution"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d035/d032/__pycache__"
+categorie = "compilation"
+taille_mo = 0
+git = "hors_git"
+propose = "supprimable"
+motif = "bytecode Python regenere a l'execution"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d035/d033/__pycache__"
+categorie = "compilation"
+taille_mo = 0
+git = "hors_git"
+propose = "supprimable"
+motif = "bytecode Python regenere a l'execution"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d029/d010/d133/build"
+categorie = "compilation"
+taille_mo = 0
+git = "ignore"
+dernier_commit_jours = 1
+propose = "supprimable"
+motif = "artefact de compilation ignore par git"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d029/d010/d134/build"
+categorie = "compilation"
+taille_mo = 0
+git = "ignore"
+dernier_commit_jours = 1
+propose = "supprimable"
+motif = "artefact de compilation ignore par git"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d041/d008/d040/__pycache__"
+categorie = "compilation"
+taille_mo = 0
+git = "ignore"
+dernier_commit_jours = 9
+propose = "supprimable"
+motif = "bytecode Python regenere a l'execution"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d111/src/d112/__pycache__"
+categorie = "compilation"
+taille_mo = 0
+git = "hors_git"
+propose = "supprimable"
+motif = "bytecode Python regenere a l'execution"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d035/d174/tests/__pycache__"
+categorie = "compilation"
+taille_mo = 0
+git = "ignore"
+dernier_commit_jours = 70
+propose = "supprimable"
+motif = "bytecode Python regenere a l'execution"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d035/d025/d037/__pycache__"
+categorie = "compilation"
+taille_mo = 0
+git = "hors_git"
+propose = "supprimable"
+motif = "bytecode Python regenere a l'execution"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d035/d025/d136/__pycache__"
+categorie = "compilation"
+taille_mo = 0
+git = "hors_git"
+propose = "supprimable"
+motif = "bytecode Python regenere a l'execution"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d035/d073/d063/__pycache__"
+categorie = "compilation"
+taille_mo = 0
+git = "ignore"
+dernier_commit_jours = 349
+propose = "supprimable"
+motif = "bytecode Python regenere a l'execution"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d118/apps/web/dist"
+categorie = "compilation"
+taille_mo = 0
+git = "ignore"
+dernier_commit_jours = 27
+propose = "supprimable"
+motif = "artefact de compilation ignore par git"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d035/d072/d070/__pycache__"
+categorie = "compilation"
+taille_mo = 0
+git = "ignore"
+dernier_commit_jours = 351
+propose = "supprimable"
+motif = "bytecode Python regenere a l'execution"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d118/apps/d051/dist"
+categorie = "compilation"
+taille_mo = 0
+git = "ignore"
+dernier_commit_jours = 27
+propose = "supprimable"
+motif = "artefact de compilation ignore par git"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d035/d045/d117/__pycache__"
+categorie = "compilation"
+taille_mo = 0
+git = "hors_git"
+propose = "supprimable"
+motif = "bytecode Python regenere a l'execution"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d035/d172/d163/__pycache__"
+categorie = "compilation"
+taille_mo = 0
+git = "ignore"
+dernier_commit_jours = 14
+propose = "supprimable"
+motif = "bytecode Python regenere a l'execution"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d035/d071/d070/__pycache__"
+categorie = "compilation"
+taille_mo = 0
+git = "ignore"
+dernier_commit_jours = 510
+propose = "supprimable"
+motif = "bytecode Python regenere a l'execution"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d035/d129/d130/__pycache__"
+categorie = "compilation"
+taille_mo = 0
+git = "hors_git"
+propose = "supprimable"
+motif = "bytecode Python regenere a l'execution"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d021/d140/d095/dist"
+categorie = "compilation"
+taille_mo = 0
+git = "ignore"
+dernier_commit_jours = 780
+propose = "supprimable"
+motif = "artefact de compilation ignore par git"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d021/d150/d094/dist"
+categorie = "compilation"
+taille_mo = 0
+git = "ignore"
+dernier_commit_jours = 324
+propose = "supprimable"
+motif = "artefact de compilation ignore par git"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d021/d048/web/dist"
+categorie = "compilation"
+taille_mo = 0
+git = "ignore"
+dernier_commit_jours = 63
+propose = "supprimable"
+motif = "artefact de compilation ignore par git"
+note_reference = "contient ca.pem : interdit sur les secrets (corrige le 20 octobre 2026)"
+reference = "protege"
+
+[[dossier]]
+chemin = "~/Desktop/d011/apps/web/dist"
+categorie = "compilation"
+taille_mo = 0
+git = "ignore"
+dernier_commit_jours = 5
+propose = "supprimable"
+motif = "artefact de compilation ignore par git"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d023/src/d057/__pycache__"
+categorie = "compilation"
+taille_mo = 0
+git = "ignore"
+dernier_commit_jours = 0
+propose = "supprimable"
+motif = "bytecode Python regenere a l'execution"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d013/d146/apps/d144/.turbo"
+categorie = "compilation"
+taille_mo = 0
+git = "ignore"
+dernier_commit_jours = 66
+propose = "supprimable"
+motif = "artefact de compilation ignore par git"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d013/d146/apps/d142/.turbo"
+categorie = "compilation"
+taille_mo = 0
+git = "ignore"
+dernier_commit_jours = 66
+propose = "supprimable"
+motif = "artefact de compilation ignore par git"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d013/d146/apps/d141/.turbo"
+categorie = "compilation"
+taille_mo = 0
+git = "ignore"
+dernier_commit_jours = 66
+propose = "supprimable"
+motif = "artefact de compilation ignore par git"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d013/d146/packages/d178/dist"
+categorie = "compilation"
+taille_mo = 0
+git = "ignore"
+dernier_commit_jours = 66
+propose = "supprimable"
+motif = "artefact de compilation ignore par git"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d013/d146/packages/d178/.turbo"
+categorie = "compilation"
+taille_mo = 0
+git = "ignore"
+dernier_commit_jours = 66
+propose = "supprimable"
+motif = "artefact de compilation ignore par git"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d013/d146/packages/d090/dist"
+categorie = "compilation"
+taille_mo = 0
+git = "ignore"
+dernier_commit_jours = 66
+propose = "supprimable"
+motif = "artefact de compilation ignore par git"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d013/d146/packages/d090/.turbo"
+categorie = "compilation"
+taille_mo = 0
+git = "ignore"
+dernier_commit_jours = 66
+propose = "supprimable"
+motif = "artefact de compilation ignore par git"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d013/d146/packages/d177/dist"
+categorie = "compilation"
+taille_mo = 0
+git = "ignore"
+dernier_commit_jours = 66
+propose = "supprimable"
+motif = "artefact de compilation ignore par git"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d013/d146/packages/d177/.turbo"
+categorie = "compilation"
+taille_mo = 0
+git = "ignore"
+dernier_commit_jours = 66
+propose = "supprimable"
+motif = "artefact de compilation ignore par git"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d013/d146/apps/d143/.turbo"
+categorie = "compilation"
+taille_mo = 0
+git = "ignore"
+dernier_commit_jours = 66
+propose = "supprimable"
+motif = "artefact de compilation ignore par git"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d041/d017/d101/tests/__pycache__"
+categorie = "compilation"
+taille_mo = 0
+git = "ignore"
+dernier_commit_jours = 48
+propose = "supprimable"
+motif = "bytecode Python regenere a l'execution"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d041/d015/d170/d075/__pycache__"
+categorie = "compilation"
+taille_mo = 0
+git = "hors_git"
+propose = "supprimable"
+motif = "bytecode Python regenere a l'execution"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d041/d015/d170/d109/__pycache__"
+categorie = "compilation"
+taille_mo = 0
+git = "hors_git"
+propose = "supprimable"
+motif = "bytecode Python regenere a l'execution"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d041/d015/d170/d092/__pycache__"
+categorie = "compilation"
+taille_mo = 0
+git = "hors_git"
+propose = "supprimable"
+motif = "bytecode Python regenere a l'execution"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d013/d055/apps/d054/.turbo"
+categorie = "compilation"
+taille_mo = 0
+git = "ignore"
+dernier_commit_jours = 100
+propose = "supprimable"
+motif = "artefact de compilation ignore par git"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d013/d055/apps/d052/.turbo"
+categorie = "compilation"
+taille_mo = 0
+git = "ignore"
+dernier_commit_jours = 100
+propose = "supprimable"
+motif = "artefact de compilation ignore par git"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d013/d055/apps/d053/.turbo"
+categorie = "compilation"
+taille_mo = 0
+git = "ignore"
+dernier_commit_jours = 100
+propose = "supprimable"
+motif = "artefact de compilation ignore par git"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d049/d027/d164/d065/__pycache__"
+categorie = "compilation"
+taille_mo = 0
+git = "ignore"
+dernier_commit_jours = 5
+propose = "supprimable"
+motif = "bytecode Python regenere a l'execution"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d023/src/d057/d113/__pycache__"
+categorie = "compilation"
+taille_mo = 0
+git = "ignore"
+dernier_commit_jours = 0
+propose = "supprimable"
+motif = "bytecode Python regenere a l'execution"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d021/d076/d077/frontend/dist"
+categorie = "compilation"
+taille_mo = 0
+git = "ignore"
+dernier_commit_jours = 41
+propose = "supprimable"
+motif = "artefact de compilation ignore par git"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d011/apps/d182/d062/__pycache__"
+categorie = "compilation"
+taille_mo = 0
+git = "ignore"
+dernier_commit_jours = 5
+propose = "supprimable"
+motif = "bytecode Python regenere a l'execution"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d011/apps/d067/d061/__pycache__"
+categorie = "compilation"
+taille_mo = 0
+git = "ignore"
+dernier_commit_jours = 5
+propose = "supprimable"
+motif = "bytecode Python regenere a l'execution"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d021/d124/d120/d089/dist"
+categorie = "compilation"
+taille_mo = 0
+git = "ignore"
+dernier_commit_jours = 46
+propose = "supprimable"
+motif = "artefact de compilation ignore par git"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d021/d116/packages/d168/dist"
+categorie = "compilation"
+taille_mo = 0
+git = "ignore"
+dernier_commit_jours = 84
+propose = "supprimable"
+motif = "artefact de compilation ignore par git"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d021/d124/d120/frontend/dist"
+categorie = "compilation"
+taille_mo = 0
+git = "ignore"
+dernier_commit_jours = 46
+propose = "supprimable"
+motif = "artefact de compilation ignore par git"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d021/d116/apps/web/dist"
+categorie = "compilation"
+taille_mo = 0
+git = "ignore"
+dernier_commit_jours = 84
+propose = "supprimable"
+motif = "artefact de compilation ignore par git"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d035/d045/d117/backend/__pycache__"
+categorie = "compilation"
+taille_mo = 0
+git = "hors_git"
+propose = "supprimable"
+motif = "bytecode Python regenere a l'execution"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d035/d045/d117/d135/__pycache__"
+categorie = "compilation"
+taille_mo = 0
+git = "hors_git"
+propose = "supprimable"
+motif = "bytecode Python regenere a l'execution"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d035/d045/d117/d153/__pycache__"
+categorie = "compilation"
+taille_mo = 0
+git = "hors_git"
+propose = "supprimable"
+motif = "bytecode Python regenere a l'execution"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d035/d045/d117/d123/__pycache__"
+categorie = "compilation"
+taille_mo = 0
+git = "hors_git"
+propose = "supprimable"
+motif = "bytecode Python regenere a l'execution"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d035/d045/d117/d066/__pycache__"
+categorie = "compilation"
+taille_mo = 0
+git = "hors_git"
+propose = "supprimable"
+motif = "bytecode Python regenere a l'execution"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d035/d045/d117/d068/__pycache__"
+categorie = "compilation"
+taille_mo = 0
+git = "hors_git"
+propose = "supprimable"
+motif = "bytecode Python regenere a l'execution"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d035/d045/d117/d091/__pycache__"
+categorie = "compilation"
+taille_mo = 0
+git = "hors_git"
+propose = "supprimable"
+motif = "bytecode Python regenere a l'execution"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d035/d045/d117/d180/__pycache__"
+categorie = "compilation"
+taille_mo = 0
+git = "hors_git"
+propose = "supprimable"
+motif = "bytecode Python regenere a l'execution"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d035/d174/src/d175/__pycache__"
+categorie = "compilation"
+taille_mo = 0
+git = "ignore"
+dernier_commit_jours = 70
+propose = "supprimable"
+motif = "bytecode Python regenere a l'execution"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d049/d183/managed_components/d098/target"
+categorie = "compilation"
+taille_mo = 0
+git = "ignore"
+dernier_commit_jours = 40
+propose = "supprimable"
+motif = "artefact de compilation ignore par git"
+note_reference = "code source C propre a chaque puce (corrige le 20 octobre 2026)"
+reference = "protege"
+
+[[dossier]]
+chemin = "~/Desktop/d013/d055/packages/d178/dist"
+categorie = "compilation"
+taille_mo = 0
+git = "ignore"
+dernier_commit_jours = 100
+propose = "supprimable"
+motif = "artefact de compilation ignore par git"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d013/d055/packages/d178/.turbo"
+categorie = "compilation"
+taille_mo = 0
+git = "ignore"
+dernier_commit_jours = 100
+propose = "supprimable"
+motif = "artefact de compilation ignore par git"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d013/d055/packages/d090/dist"
+categorie = "compilation"
+taille_mo = 0
+git = "ignore"
+dernier_commit_jours = 100
+propose = "supprimable"
+motif = "artefact de compilation ignore par git"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d013/d055/packages/d090/.turbo"
+categorie = "compilation"
+taille_mo = 0
+git = "ignore"
+dernier_commit_jours = 100
+propose = "supprimable"
+motif = "artefact de compilation ignore par git"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d013/d055/packages/d177/dist"
+categorie = "compilation"
+taille_mo = 0
+git = "ignore"
+dernier_commit_jours = 100
+propose = "supprimable"
+motif = "artefact de compilation ignore par git"
+reference = "supprimable"
+
+[[dossier]]
+chemin = "~/Desktop/d013/d055/packages/d177/.turbo"
+categorie = "compilation"
+taille_mo = 0
+git = "ignore"
+dernier_commit_jours = 100
+propose = "supprimable"
+motif = "artefact de compilation ignore par git"
+reference = "supprimable"
+
+[[cache]]
+chemin = "~/.gradle"
+categorie = "caches_globaux"
+taille_mo = 7623
+propose = "supprimable_en_ligne"
+motif = "caches et distributions Gradle, retelecharges"
+reference = "supprimable_en_ligne"
+
+[[cache]]
+chemin = "~/.npm"
+categorie = "caches_globaux"
+taille_mo = 2410
+propose = "supprimable_en_ligne"
+motif = "cache npm"
+reference = "supprimable_en_ligne"
+
+[[cache]]
+chemin = "~/.cargo/registry"
+categorie = "caches_globaux"
+taille_mo = 1405
+propose = "supprimable_en_ligne"
+motif = "sources des crates, retelechargees"
+reference = "supprimable_en_ligne"
+
+[[cache]]
+chemin = "~/.cache"
+categorie = "caches_globaux"
+taille_mo = 2422
+propose = "a_juger"
+motif = "contenu heterogene, inclut des modeles Hugging Face"
+reference = "a_juger"
+
+[[cache]]
+chemin = "~/.cache/huggingface"
+categorie = "modeles_ia"
+taille_mo = 534
+propose = "a_juger"
+motif = "dedoublonnage seulement"
+reference = "a_juger"
+
+[[cache]]
+chemin = "~/.rustup"
+categorie = "outils_plateforme"
+taille_mo = 2681
+propose = "a_juger"
+motif = "chaines d'outils Rust : reinstallation"
+reference = "a_juger"
+
+[[cache]]
+chemin = "~/Library/Caches"
+categorie = "caches_globaux"
+taille_mo = 4043
+propose = "a_juger"
+motif = "caches d'applications, pas seulement de developpement"
+reference = "a_juger"
+
+[[cache]]
+chemin = "~/Library/Developer/CoreSimulator"
+categorie = "outils_plateforme"
+taille_mo = 1417
+propose = "a_juger"
+motif = "simulateurs : donnees d'apps possibles"
+reference = "a_juger"
+
+[[cache]]
+chemin = "~/Library/Containers/com.docker.docker"
+categorie = "outils_plateforme"
+taille_mo = 3980
+propose = "protege"
+motif = "passer par les operations Docker ; les volumes sont interdits"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/fichier.db"
+git = "hors_git"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d118/.env"
+git = "ignore"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d011/.env"
+git = "ignore"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d041/fichier.db"
+git = "hors_git"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d106/d059/backend/.env"
+git = "ignore"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d021/d116/.env.prod"
+git = "ignore"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d021/d116/.env"
+git = "ignore"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d021/d018/fichier.db"
+git = "hors_git"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d021/d048/.env"
+git = "ignore"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d021/d104/.env.backup-localhost"
+git = "hors_git"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d021/d104/.env"
+git = "hors_git"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d021/d104/.env.example"
+git = "hors_git"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d021/d110/.env"
+git = "hors_git"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d021/d110/.env.example"
+git = "hors_git"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d022/d115/.env.local.atlas-backup"
+git = "ignore"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d022/d115/.env.local"
+git = "ignore"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d049/d119/local.properties"
+git = "ignore"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d049/d026/local.properties"
+git = "ignore"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d041/d008/fichier.db"
+git = "hors_git"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d041/d038/fichier.db"
+git = "hors_git"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d013/d055/.env"
+git = "ignore"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d049/d028/fichier.db"
+git = "hors_git"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d041/d083/fichier.db"
+git = "hors_git"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d041/d017/fichier.db"
+git = "hors_git"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d029/d010/local.properties"
+git = "ignore"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d035/d172/.env"
+git = "ignore"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d035/db/fichier.sqlite"
+git = "hors_git"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d035/d129/fichier.sqlite"
+git = "hors_git"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d035/d129/fichier.sqlite"
+git = "hors_git"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d035/d033/fichier.db"
+git = "hors_git"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d021/d161/frontend/.env.local"
+git = "hors_git"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d021/d161/frontend/.env.development"
+git = "hors_git"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d021/d161/backend/.env"
+git = "hors_git"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d021/d161/backend/.env.example"
+git = "hors_git"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d021/d160/frontend/.env.local"
+git = "ignore"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d021/d160/frontend/.env.example"
+git = "ignore"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d021/d160/backend/.env"
+git = "ignore"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d021/d140/d095/.env"
+git = "ignore"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d021/d140/d138/.env"
+git = "non_suivi_non_ignore"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d021/d060/frontend/.env.local"
+git = "ignore"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d021/d060/backend/.env"
+git = "ignore"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d021/d018/d162/.env"
+git = "ignore"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d021/d048/d002/fichier.pem"
+git = "ignore"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d021/d104/frontend/.env.local"
+git = "hors_git"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d021/d104/frontend/.env.example"
+git = "hors_git"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d021/d104/backend/.env"
+git = "hors_git"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d021/d104/backend/.env.example"
+git = "hors_git"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d021/d103/d121/.env"
+git = "ignore"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d021/d103/frontend/.env"
+git = "ignore"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d021/d150/data/fichier.db"
+git = "ignore"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d021/d048/d000/fichier.pem"
+git = "ignore"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d021/d048/d000/fichier.pem"
+git = "ignore"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d021/d048/d000/fichier.pem"
+git = "ignore"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d021/d048/d000/fichier.pem"
+git = "ignore"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d021/d103/backend/.env"
+git = "ignore"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d021/d076/d077/.env"
+git = "ignore"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d021/d122/web/.env.local"
+git = "ignore"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d021/d110/data/fichier.db"
+git = "hors_git"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d019/d167/android/local.properties"
+git = "non_suivi_non_ignore"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d019/d169/android/local.properties"
+git = "hors_git"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d021/d122/api/.env"
+git = "ignore"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d019/d148/android/local.properties"
+git = "hors_git"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d019/d082/android/local.properties"
+git = "hors_git"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d019/d155/android/local.properties"
+git = "hors_git"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d019/d152/android/local.properties"
+git = "non_suivi_non_ignore"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d019/d173/android/local.properties"
+git = "hors_git"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d019/d151/android/local.properties"
+git = "ignore"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d019/d184/android/local.properties"
+git = "ignore"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d046/d132/Library/fichier.db"
+git = "hors_git"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d046/d012/Library/fichier.db"
+git = "ignore"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d049/d027/mobile/local.properties"
+git = "ignore"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d035/d072/frontend/.env.local"
+git = "ignore"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d035/d072/frontend/.env"
+git = "ignore"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d035/d072/d070/.env"
+git = "ignore"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d035/d176/d176/.env"
+git = "ignore"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d035/d176/d176/.env.example"
+git = "non_suivi_non_ignore"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d035/d042/d093/.env"
+git = "hors_git"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d035/d071/frontend/.env.local"
+git = "non_suivi_non_ignore"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d035/d071/d070/.env"
+git = "non_suivi_non_ignore"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d035/d073/d063/.env"
+git = "ignore"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d021/d161/d105/android/local.properties"
+git = "hors_git"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d035/d025/d136/fichier.db"
+git = "hors_git"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d035/d073/d107/.env.production"
+git = "ignore"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d035/d073/d107/.env.local"
+git = "ignore"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d035/d073/d107/.env"
+git = "ignore"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d035/d073/d107/.env.development"
+git = "ignore"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d021/d140/d157/backend/.env"
+git = "ignore"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d021/d140/d157/frontend/.env.local"
+git = "ignore"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d021/d124/d120/backend/fichier.db"
+git = "ignore"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d021/d124/d120/backend/.env"
+git = "ignore"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d021/d150/backend/data/fichier.db"
+git = "ignore"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d021/d048/web/dist/fichier.pem"
+git = "ignore"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d021/d048/web/d156/fichier.pem"
+git = "ignore"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d035/d088/apps/d085/.env"
+git = "ignore"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d041/d036/d044/Library/fichier.db"
+git = "hors_git"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d035/d088/apps/d086/fichier.db"
+git = "ignore"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d013/d146/apps/d141/.env.example"
+git = "ignore"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d013/d055/apps/d052/.env"
+git = "ignore"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d046/d012/Library/d039/fichier.db"
+git = "ignore"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d046/d012/Library/d039/fichier.db"
+git = "ignore"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d046/d012/Library/d039/fichier.db"
+git = "ignore"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d046/d132/Library/d039/fichier.db"
+git = "hors_git"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d046/d132/Library/d039/fichier.db"
+git = "hors_git"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d046/d132/Library/d039/fichier.db"
+git = "hors_git"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[piege]]
+chemin = "~/Desktop/d021/d014/d084/d001/fichier.db"
+git = "hors_git"
+propose = "protege"
+motif = "secret, configuration locale ou base de donnees"
+reference = "protege"
+
+[[inconnu]]
+chemin = "~/Desktop/d021/d064/d127/release"
+reference = "a_juger"
+
+[[inconnu]]
+chemin = "~/Desktop/d021/d149/release"
+reference = "a_juger"
+
+[[inconnu]]
+chemin = "~/Desktop/d046/d012/Builds"
+reference = "a_juger"
+
+[[inconnu]]
+chemin = "~/Desktop/d046/d012/Library/Bee/d009/d034/d024/Gradle/unityLibrary/src"
+reference = "supprimable"
+
+[[inconnu]]
+chemin = "~/Desktop/d046/d012/Library/PackageCache/d079/Lib"
+reference = "supprimable"
+
+[[inconnu]]
+chemin = "~/Desktop/d046/d012/Library/PackageCache/d080/Documentation~"
+reference = "supprimable"
+
+[[inconnu]]
+chemin = "~/Desktop/d046/d012/Library/PackageCache/d080/Samples~"
+reference = "supprimable"
+
+[[inconnu]]
+chemin = "~/Desktop/d046/d012/Library/PackageCache/d081/Samples~"
+reference = "supprimable"
+
+[[inconnu]]
+chemin = "~/Desktop/d046/d043/Library"
+reference = "supprimable"
+
+[[inconnu]]
+chemin = "~/Desktop/d046/d132/Assets"
+reference = "protege"
+
+[[inconnu]]
+chemin = "~/Desktop/d046/d132/Library/Bee/d009/d034/d024/Gradle/unityLibrary/src"
+reference = "supprimable"
+
+[[inconnu]]
+chemin = "~/Desktop/d046/d132/Library/Bee/d009/d034/d030/Gradle/unityLibrary/src"
+reference = "supprimable"
+
+[[inconnu]]
+chemin = "~/Desktop/d046/d132/Library/PackageCache/d078/Documentation~"
+reference = "supprimable"
+
+[[inconnu]]
+chemin = "~/Desktop/d046/d132/Library/PackageCache/d078/Samples~"
+reference = "supprimable"
+
+[[inconnu]]
+chemin = "~/Desktop/d046/d132/Library/PackageCache/d081/Samples~"
+reference = "supprimable"
+
+[[inconnu]]
+chemin = "~/Desktop/d049/d183/managed_components/d096/d003"
+reference = "supprimable_en_ligne"
+
+[[inconnu]]
+chemin = "~/Desktop/d049/d183/managed_components/d096/d004"
+reference = "supprimable_en_ligne"
+
+[[inconnu]]
+chemin = "~/Desktop/d049/d183/managed_components/d096/d005"
+reference = "supprimable_en_ligne"
+
+[[inconnu]]
+chemin = "~/Desktop/d049/d183/managed_components/d096/d006"
+reference = "supprimable_en_ligne"
+
+[[inconnu]]
+chemin = "~/Desktop/d049/d183/managed_components/d096/d007"
+reference = "supprimable_en_ligne"
+
+[[inconnu]]
+chemin = "~/Desktop/d049/d183/managed_components/d097/model/d137"
+reference = "supprimable_en_ligne"
+
+[[inconnu]]
+chemin = "~/Desktop/d049/d183/managed_components/d097/model/d181"
+reference = "supprimable_en_ligne"
+
+[[inconnu]]
+chemin = "~/Desktop/d049/d183/managed_components/d099/lib"
+reference = "supprimable_en_ligne"
+
+[[inconnu]]
+chemin = "~/Desktop/d049/d183/managed_components/d100/lib"
+reference = "supprimable_en_ligne"
+
+[[inconnu]]
+chemin = "~/Desktop/d049/d183/managed_components/d125/tests/d158"
+reference = "supprimable_en_ligne"
+
+[[inconnu]]
+chemin = "~/Desktop/d049/d183/managed_components/d125/tests/d159"
+reference = "supprimable_en_ligne"
+
+[[inconnu]]
+chemin = "~/Desktop/d069/src-tauri/binaries"
+reference = "protege"

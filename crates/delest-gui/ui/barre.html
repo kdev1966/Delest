@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Delest</title>
+<!-- The floating gauge, a slim channel strip the size of Vario's (156 x 494): a dial
+     whose lit segments are the free space then what Delest can free, the alert mark,
+     what can be freed by kind, the heaviest projects and the two keys. -->
+<link rel="stylesheet" href="theme.css">
+<style>
+  .abs { position: absolute; }
+  .plate { position: absolute; left: 12px; width: 132px; border-radius: 7px; background: var(--plate); border: 1px solid var(--edge); }
+  #logo { left: 12px; top: 9px; }
+  #face { top: 36px; height: 150px; overflow: hidden; }
+  #face-light { left: 3px; top: 3px; width: 124px; height: 142px; border-radius: 5px;
+    background: radial-gradient(circle at 50% 45%, #2c2d36 0%, #17181d 75%); }
+  #cap { left: 30px; top: 38px; width: 72px; height: 72px; border-radius: 36px; border: 1px solid #0d0e11;
+    background: radial-gradient(circle at 50% 35%, #3a3c46 0%, #24252c 65%, #1b1c22 100%);
+    display: flex; flex-direction: column; align-items: center; justify-content: center; }
+  #free { font-size: 19px; font-weight: 800; line-height: 1; }
+  #of { left: 0; top: 128px; width: 130px; text-align: center; }
+  #kinds { top: 194px; height: 92px; padding: 6px 8px; display: flex; flex-direction: column; gap: 6px; }
+  .kind { display: flex; align-items: center; gap: 6px; font-size: 10px; white-space: nowrap; }
+  .kind span:nth-child(2) { color: var(--soft); }
+  .kind b { margin-left: auto; font-size: 10px; }
+  #heaviest { top: 294px; height: 122px; padding: 6px 8px; display: flex; flex-direction: column; gap: 4px; overflow: hidden; }
+  .line { display: flex; gap: 6px; font-size: 10px; padding: 2px 0; border-bottom: 1px solid var(--key); }
+  .line:last-child { border-bottom: 0; }
+  .line span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
+  .line b { margin-left: auto; font-family: var(--mono); font-weight: 400; font-size: 9px; color: var(--soft); flex: none; }
+  #proposals { left: 12px; top: 426px; width: 132px; height: 24px; }
+  #open { left: 0; top: 458px; width: 156px; height: 18px; padding: 0; border: 0; background: transparent;
+    color: var(--accent); font-size: 9px; font-weight: 700; }
+  #open:hover { color: var(--text); }
+</style>
+</head>
+<body>
+<div class="panel"></div>
+<div id="logo" class="abs logo">Delest</div>
+<button class="close" id="close" aria-label="Fermer">×</button>
+
+<div id="face" class="plate">
+  <div id="face-light" class="abs"></div>
+  <svg id="dial" class="abs" style="left:0;top:0" width="132" height="150" viewBox="0 0 132 150" role="img"></svg>
+  <div id="cap" class="abs"><div id="free"></div><div class="caption" style="margin-top:3px" data-t>Libres</div></div>
+  <div id="of" class="abs caption"></div>
+</div>
+
+<div id="kinds" class="plate">
+  <div class="caption" data-t>À libérer</div>
+  <div class="kind"><span class="swatch" style="background:var(--accent)"></span><span data-t>Supprimable</span><b id="rebuildable"></b></div>
+  <div class="kind"><span class="swatch" style="background:var(--online)"></span><span data-t>Avec réseau</span><b id="online"></b></div>
+  <div class="kind"><span class="swatch" style="background:var(--review)"></span><span data-t>À juger</span><b id="review"></b></div>
+</div>
+
+<div id="heaviest" class="plate">
+  <div class="caption" data-t>Les plus gros</div>
+  <div id="top"></div>
+</div>
+
+<button id="proposals" class="abs primary" data-t>Propositions</button>
+<button id="open" class="abs" data-t>ouvrir Delest ↗</button>
+<script src="common.js"></script>
+<script src="barre.js"></script>
+</body>
+</html>

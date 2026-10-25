@@ -1,0 +1,132 @@
+name: CI
+
+# Every pull request is tested on macOS, Linux and Windows, with clippy on each, for
+# the code each system has of its own; a merge into main also builds the packages.
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# A new push to a pull request stops the run still going for the previous one.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+env:
+  CARGO_TERM_COLOR: always
+  RUSTFLAGS: -D warnings
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Interface libraries
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libwebkit2gtk-4.1-dev libayatana-appindicator3-dev librsvg2-dev
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: clippy, rustfmt
+      - uses: Swatinem/rust-cache@v2
+      - run: cargo fmt --all --check
+      - run: cargo clippy --workspace --all-targets -- -D warnings
+
+  # macOS is Delest's reference system.
+  test-macos:
+    name: test (macOS)
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: clippy
+      - uses: Swatinem/rust-cache@v2
+      - run: cargo clippy --workspace --all-targets -- -D warnings
+      - run: cargo test --workspace --all-targets --no-fail-fast
+      - name: Smoke test the command
+        run: |
+          cargo run --quiet -p delest -- --version
+          cargo run --quiet -p delest -- doctor
+          echo '{}' | cargo run --quiet -p delest -- hook session-start --via cursor
+          cargo run --quiet -p delest -- scan --quiet .
+
+  # Linux: the whole workspace, the interface included (Tauri needs WebKitGTK).
+  test-linux:
+    name: test (Linux)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Interface libraries
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libwebkit2gtk-4.1-dev libayatana-appindicator3-dev librsvg2-dev
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: clippy
+      - uses: Swatinem/rust-cache@v2
+      - run: cargo clippy --workspace --all-targets -- -D warnings
+      - run: cargo test --workspace --all-targets --no-fail-fast
+      - name: Smoke test the command
+        run: |
+          cargo run --quiet -p delest -- --version
+          cargo run --quiet -p delest -- doctor
+          cargo run --quiet -p delest -- scan --quiet .
+      - name: The timer, on and off (systemd user timer)
+        run: |
+          sudo loginctl enable-linger "$USER"
+          export XDG_RUNTIME_DIR=/run/user/$(id -u)
+          for i in $(seq 1 20); do [ -S "$XDG_RUNTIME_DIR/bus" ] && break; sleep 1; done
+          cargo install --quiet --locked --path crates/delest --root "$RUNNER_TEMP/delest"
+          delest="$RUNNER_TEMP/delest/bin/delest"
+          "$delest" timer on
+          "$delest" timer
+          systemctl --user list-timers delest-check.timer --no-pager
+          "$delest" timer off
+          "$delest" timer
+
+  # Windows: the whole workspace, the interface included.
+  test-windows:
+    name: test (Windows)
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: clippy
+      - uses: Swatinem/rust-cache@v2
+      - run: cargo clippy --workspace --all-targets -- -D warnings
+      - run: cargo test --workspace --all-targets --no-fail-fast
+      - name: Smoke test the command
+        run: |
+          cargo run --quiet -p delest -- --version
+          cargo run --quiet -p delest -- doctor
+          cargo run --quiet -p delest -- scan --quiet .
+      - name: The timer, on and off (Task Scheduler)
+        shell: bash
+        run: |
+          cargo install --quiet --locked --path crates/delest --root "$RUNNER_TEMP/delest"
+          delest="$RUNNER_TEMP/delest/bin/delest.exe"
+          "$delest" timer on
+          "$delest" timer
+          schtasks //Query //TN "Delest check" //V //FO LIST | grep -E "TaskName|Task To Run|Schedule Type|Repeat: Every" || true
+          "$delest" timer off
+          "$delest" timer
+
+  msrv:
+    name: minimum Rust version (1.89, core and command line)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: dtolnay/rust-toolchain@1.89
+      - uses: Swatinem/rust-cache@v2
+      - run: cargo check --all-targets -p delest-core -p delest
+
+  # The installable packages of what was merged, kept as the run's artifacts.
+  package:
+    if: github.event_name == 'push'
+    uses: ./.github/workflows/package.yml

@@ -1,0 +1,27 @@
+[package]
+name = "delest-core"
+description = "Core library of Delest: scan, rules, absolute bans and the Arbiter that decides what can be freed."
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+authors.workspace = true
+repository.workspace = true
+readme = "../../README.md"
+
+[dependencies]
+chrono = { version = "0.4", default-features = false, features = ["clock"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = { version = "1", features = ["preserve_order"] }
+sha2 = "0.10"
+sys-locale = "0.3"
+toml = "0.9"
+
+[target.'cfg(windows)'.dependencies]
+fs4 = { version = "1.1", default-features = false }
+
+[dev-dependencies]
+tempfile = "3"
+
+[lints]
+workspace = true
