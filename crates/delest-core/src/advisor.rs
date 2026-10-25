@@ -319,8 +319,14 @@ pub struct Setup {
 /// Why the models cannot run now.
 #[derive(Debug, PartialEq, Eq)]
 pub enum Missing {
-    /// Not enough free memory, or a low battery.
-    Capacity,
+    /// Not enough free memory for the model: what it needs, what is free (if read).
+    Memory {
+        model: &'static str,
+        needed: u64,
+        available: Option<u64>,
+    },
+    /// On battery, below the charge models need.
+    Battery(u32),
     Model(&'static str),
     Engine,
 }
@@ -328,11 +334,36 @@ pub enum Missing {
 impl Missing {
     pub fn text(&self, lang: Lang) -> String {
         match self {
-            Missing::Capacity => crate::tr!(
-                lang,
-                "not enough free memory, or the battery is low: no model is started now.",
-                "pas assez de mémoire libre, ou batterie faible : aucun modèle n'est lancé maintenant."
-            ),
+            Missing::Memory {
+                model,
+                needed,
+                available,
+            } => {
+                let needed = crate::lang::size(*needed, lang);
+                match available {
+                    Some(free) => {
+                        let free = crate::lang::size(*free, lang);
+                        crate::tr!(
+                            lang,
+                            "{model} needs {needed} of free memory, and {free} is free now: close some applications, or use a machine with more memory.",
+                            "{model} a besoin de {needed} de mémoire libre, et {free} sont libres maintenant : fermez des applications, ou utilisez une machine avec plus de mémoire."
+                        )
+                    }
+                    None => crate::tr!(
+                        lang,
+                        "{model} needs {needed} of free memory, and the free memory cannot be read on this system: no model is started.",
+                        "{model} a besoin de {needed} de mémoire libre, et la mémoire libre n'est pas lisible sur ce système : aucun modèle n'est lancé."
+                    ),
+                }
+            }
+            Missing::Battery(percent) => {
+                let minimum = crate::capacities::MIN_BATTERY_PERCENT;
+                crate::tr!(
+                    lang,
+                    "on battery at {percent} %: no model is started below {minimum} %; plug the machine in.",
+                    "sur batterie à {percent} % : aucun modèle n'est lancé sous {minimum} % ; branchez la machine."
+                )
+            }
             Missing::Model(name) => crate::tr!(
                 lang,
                 "{name} is not installed: Settings › AI › Install the local AI, or delest models add {name}",
@@ -349,15 +380,28 @@ impl Missing {
 
 /// The engine and the models that fit the machine right now.
 pub fn setup(home: &Path) -> Result<Setup, Missing> {
-    use crate::capacities::{self, Reasoning};
-    let (name, label) =
-        match capacities::reasoning(capacities::available_memory(), capacities::on_battery()) {
-            Reasoning::Main => ("gemma-4-e2b", "Gemma 4 E2B"),
-            Reasoning::Fallback => ("qwen3.5-2b", "Qwen3.5 2B"),
-            Reasoning::None => return Err(Missing::Capacity),
-        };
+    use crate::capacities::{self, MIN_BATTERY_PERCENT, REASONING_BYTES, Reasoning};
+    let available = capacities::available_memory();
+    let battery = capacities::on_battery();
+    if let Some(percent) = battery.filter(|percent| *percent < MIN_BATTERY_PERCENT) {
+        return Err(Missing::Battery(percent));
+    }
     let store = crate::models::store_dir(home);
     let manifest = crate::models::Manifest::load(&store).unwrap_or_default();
+    // The main model's needs are the ones said: the fallback, when it is not
+    // installed, is no way out.
+    let short = Missing::Memory {
+        model: "Gemma 4 E2B",
+        needed: REASONING_BYTES,
+        available,
+    };
+    let (name, label) = match capacities::reasoning(available, battery) {
+        Reasoning::Main => ("gemma-4-e2b", "Gemma 4 E2B"),
+        Reasoning::Fallback if manifest.path(&store, "qwen3.5-2b").is_some() => {
+            ("qwen3.5-2b", "Qwen3.5 2B")
+        }
+        Reasoning::Fallback | Reasoning::None => return Err(short),
+    };
     let embedding = manifest
         .path(&store, "embeddinggemma-2")
         .ok_or(Missing::Model("embeddinggemma-2"))?;
@@ -454,6 +498,20 @@ mod tests {
             idle_days: None,
             shadow: None,
         }
+    }
+
+    #[test]
+    fn short_memory_is_said_with_its_figures() {
+        let short = Missing::Memory {
+            model: "Gemma 4 E2B",
+            needed: 4_000_000_000,
+            available: Some(3_300_000_000),
+        };
+        assert_eq!(
+            short.text(Lang::Fr),
+            "Gemma 4 E2B a besoin de 4,0 Go de mémoire libre, et 3,3 Go sont libres maintenant : fermez des applications, ou utilisez une machine avec plus de mémoire."
+        );
+        assert!(Missing::Battery(20).text(Lang::En).contains("at 20 %"));
     }
 
     #[test]
