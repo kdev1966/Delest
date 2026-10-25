@@ -549,7 +549,8 @@ function showSetup(s) {
 }
 
 function drawAi(a) {
-  const reasoning = { main: t("Gemma 4 E2B peut tourner maintenant"), fallback: t("seul le modèle de repli peut tourner maintenant"), none: t("pas assez de mémoire libre ou batterie faible : aucun modèle maintenant") }[a.reasoning];
+  const reasoning = a.capacity_note
+    || { main: t("Gemma 4 E2B peut tourner maintenant"), fallback: t("seul le modèle de repli peut tourner maintenant"), none: t("pas assez de mémoire libre ou batterie faible : aucun modèle maintenant") }[a.reasoning];
   $("ai").innerHTML = a.models.map((model) => `<div class="bar-row" style="grid-template-columns:minmax(0,150px) minmax(0,1fr) 70px">
       <span class="mono">${escape(model.name)}</span><span class="muted">${escape(model.role)}</span>
       <span class="value">${model.installed ? escape(model.size_shown) : escape(t("absent"))}</span></div>`).join("")

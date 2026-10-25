@@ -290,6 +290,8 @@ pub struct AiSettings {
     thermostat: Option<String>,
     /// The engine or one of the two models is missing: the button to install them shows.
     missing: bool,
+    /// Why no model can run now, with the figures: memory needed and free, or battery.
+    capacity_note: Option<String>,
 }
 
 #[tauri::command]
@@ -323,6 +325,12 @@ pub async fn ai_settings(ctx: State<'_, Ctx>) -> Result<AiSettings, String> {
             .collect(),
         store: ctx.short(&store),
         engine: engine::server_program(&store).is_some(),
+        capacity_note: match advisor::setup(&ctx.home) {
+            Err(why @ (advisor::Missing::Memory { .. } | advisor::Missing::Battery(_))) => {
+                Some(why.text(ctx.lang()))
+            }
+            _ => None,
+        },
         missing: engine::server_program(&store).is_none()
             || install::MODELS
                 .iter()
