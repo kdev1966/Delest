@@ -911,44 +911,86 @@ fn main() {
     tauri::Builder::default()
         .manage(ctx)
         .setup(|app| {
-            // The menu bar's D, black on clear: macOS tints it to match the bar.
-            let icon = tauri::image::Image::from_bytes(include_bytes!("../icons/tray.png"))?;
-            TrayIconBuilder::with_id("delest")
+            // macOS: the menu bar's D, black on clear, tinted to match the bar. Elsewhere
+            // the image would stay black on a dark panel or taskbar: the app's icon.
+            let macos = cfg!(target_os = "macos");
+            let icon = if macos {
+                tauri::image::Image::from_bytes(include_bytes!("../icons/tray.png"))?
+            } else {
+                app.default_window_icon().cloned().ok_or("no icon")?
+            };
+            let mut tray = TrayIconBuilder::with_id("delest")
                 .icon(icon)
-                .icon_as_template(true)
-                .tooltip(concat!("Delest · ", env!("CARGO_PKG_AUTHORS")))
-                .on_tray_icon_event(|tray, event| {
-                    if let TrayIconEvent::Click {
-                        button: MouseButton::Left,
-                        button_state: MouseButtonState::Up,
-                        rect,
-                        ..
-                    } = event
+                .icon_as_template(macos)
+                .tooltip(concat!("Delest · ", env!("CARGO_PKG_AUTHORS")));
+            // Linux shows a tray icon only with a menu, and sends it no click: the
+            // menu does what the click does elsewhere (seen on Xubuntu 24.04).
+            if cfg!(target_os = "linux") {
+                use tauri::menu::{Menu, MenuItem};
+                let lang = app.state::<Ctx>().lang();
+                let gauge = MenuItem::with_id(
+                    app,
+                    "gauge",
+                    tr!(lang, "Floating gauge", "Jauge flottante"),
+                    true,
+                    None::<&str>,
+                )?;
+                let open = MenuItem::with_id(
+                    app,
+                    "open",
+                    tr!(lang, "Open Delest", "Ouvrir Delest"),
+                    true,
+                    None::<&str>,
+                )?;
+                let quit = MenuItem::with_id(
+                    app,
+                    "quit",
+                    tr!(lang, "Quit", "Quitter"),
+                    true,
+                    None::<&str>,
+                )?;
+                let menu = Menu::with_items(app, &[&gauge, &open, &quit])?;
+                tray = tray
+                    .menu(&menu)
+                    .on_menu_event(|app, event| match event.id().as_ref() {
+                        "gauge" => open_gauge(app.clone()),
+                        "open" => open_main(app.clone()),
+                        "quit" => app.exit(0),
+                        _ => {}
+                    });
+            }
+            tray.on_tray_icon_event(|tray, event| {
+                if let TrayIconEvent::Click {
+                    button: MouseButton::Left,
+                    button_state: MouseButtonState::Up,
+                    rect,
+                    ..
+                } = event
+                {
+                    let app = tray.app_handle();
+                    // The main window open: the click goes back to the gauge.
+                    if app
+                        .get_webview_window("main")
+                        .is_some_and(|main| main.is_visible().unwrap_or(false))
                     {
-                        let app = tray.app_handle();
-                        // The main window open: the click goes back to the gauge.
-                        if app
-                            .get_webview_window("main")
-                            .is_some_and(|main| main.is_visible().unwrap_or(false))
-                        {
-                            open_gauge(app.clone());
-                            return;
-                        }
-                        let scale = app
-                            .get_webview_window("barre")
-                            .and_then(|window| window.scale_factor().ok())
-                            .unwrap_or(1.0);
-                        let position = rect.position.to_physical::<f64>(scale);
-                        let size = rect.size.to_physical::<f64>(scale);
-                        let icon = Icon {
-                            center: position.x + size.width / 2.0,
-                            top: position.y,
-                            bottom: position.y + size.height,
-                        };
-                        toggle_barre(app, Some(icon), false);
+                        open_gauge(app.clone());
+                        return;
                     }
-                })
-                .build(app)?;
+                    let scale = app
+                        .get_webview_window("barre")
+                        .and_then(|window| window.scale_factor().ok())
+                        .unwrap_or(1.0);
+                    let position = rect.position.to_physical::<f64>(scale);
+                    let size = rect.size.to_physical::<f64>(scale);
+                    let icon = Icon {
+                        center: position.x + size.width / 2.0,
+                        top: position.y,
+                        bottom: position.y + size.height,
+                    };
+                    toggle_barre(app, Some(icon), false);
+                }
+            })
+            .build(app)?;
             // Delest starts as its gauge; the main window opens from it. A page asked
             // with DELEST_GUI_PAGE, for checks, opens the main window instead.
             if std::env::var_os("DELEST_GUI_PAGE").is_some() {
