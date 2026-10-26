@@ -141,7 +141,11 @@ pub fn clean(
             lang::size(total(&plan.kept_active), lang),
         );
         let days = delest_core::activity::INACTIVE_AFTER_DAYS;
-        let kept = if plan.kept_active.len() == 1 { "Gardé" } else { "Gardés" };
+        let kept = if plan.kept_active.len() == 1 {
+            "Gardé"
+        } else {
+            "Gardés"
+        };
         println!(
             "{}",
             tr!(
@@ -183,7 +187,11 @@ pub fn clean(
             items(plan.to_review.len(), lang),
             lang::size(total(&plan.to_review), lang),
         );
-        let left = if plan.to_review.len() == 1 { "laissé" } else { "laissés" };
+        let left = if plan.to_review.len() == 1 {
+            "laissé"
+        } else {
+            "laissés"
+        };
         println!(
             "{}",
             tr!(
