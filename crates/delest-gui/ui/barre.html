@@ -8,6 +8,10 @@
      what can be freed by kind, the heaviest projects and the two keys. -->
 <link rel="stylesheet" href="theme.css">
 <style>
+  /* The gauge is 156 wide. Linux (GTK) makes no undecorated window narrower than 200:
+     the panel keeps its width, and the rest of the window stays clear. */
+  .panel { right: auto; width: 156px; }
+  .close { right: auto; left: 130px; }
   .abs { position: absolute; }
   .plate { position: absolute; left: 12px; width: 132px; border-radius: 7px; background: var(--plate); border: 1px solid var(--edge); }
   #logo { left: 12px; top: 9px; }
