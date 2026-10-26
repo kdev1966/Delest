@@ -4,6 +4,22 @@ All notable changes to Delest are listed here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and versions follow
 [Semantic Versioning](https://semver.org/).
 
+## [0.1.2] - 2026-10-26
+
+### Fixed
+
+- **Linux**: Delest's icon now shows in the panel, with a menu (Floating gauge, Open
+  Delest, Quit). Linux shows a tray icon only when it has a menu, and sends it no click.
+  Tried on Xubuntu 24.04.
+- The icon is the app's colored one outside macOS: the black image macOS tints stayed
+  black on a dark panel or taskbar.
+
+### Changed
+
+- When no model can run, Delest says why with the figures: the memory the model needs
+  and what is free (“Gemma 4 E2B needs 4.0 GB of free memory, and 3.3 GB is free now”),
+  or the battery's charge. Settings › AI shows the same sentence.
+
 ## [0.1.1] - 2026-10-25
 
 Delest is now open source, under the MIT licence.
@@ -68,5 +84,6 @@ its reasons.
 - The app has been tried on an Intel Mac and on Windows 11, not yet on an Apple
   Silicon Mac nor on a Linux desktop.
 
+[0.1.2]: https://github.com/kdev1966/Delest/releases/tag/v0.1.2
 [0.1.1]: https://github.com/kdev1966/Delest/releases/tag/v0.1.1
 [0.1.0]: https://github.com/kdev1966/delest-site/releases/tag/v0.1.0
