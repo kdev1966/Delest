@@ -4,6 +4,15 @@ All notable changes to Delest are listed here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and versions follow
 [Semantic Versioning](https://semver.org/).
 
+## [0.1.3] - 2026-10-26
+
+### Fixed
+
+- **Linux**: the floating gauge keeps its width; GTK made its window 200 points wide and
+  the gauge overflowed on the right. Tried on Xubuntu 24.04.
+- In French, `delest clean` agrees with a single item: « Gardé : 1 élément »,
+  « À juger : 1 élément (126 Mo), laissé de côté ».
+
 ## [0.1.2] - 2026-10-26
 
 ### Fixed
@@ -84,6 +93,7 @@ its reasons.
 - The app has been tried on an Intel Mac and on Windows 11, not yet on an Apple
   Silicon Mac nor on a Linux desktop.
 
+[0.1.3]: https://github.com/kdev1966/Delest/releases/tag/v0.1.3
 [0.1.2]: https://github.com/kdev1966/Delest/releases/tag/v0.1.2
 [0.1.1]: https://github.com/kdev1966/Delest/releases/tag/v0.1.1
 [0.1.0]: https://github.com/kdev1966/delest-site/releases/tag/v0.1.0
