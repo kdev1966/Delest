@@ -306,6 +306,17 @@ pub fn may_purge_early(quarantined: &Quarantined) -> bool {
     quarantined.entry.assessment.verdict == crate::verdict::Verdict::Rebuildable
 }
 
+/// Whether the developer may still delete the entry early by asking for it: what
+/// rebuilds from the network too, which needs the network again to come back. Never
+/// what was to review: a doubt keeps its whole retention period.
+pub fn may_purge_on_request(quarantined: &Quarantined) -> bool {
+    use crate::verdict::Verdict;
+    matches!(
+        quarantined.entry.assessment.verdict,
+        Verdict::Rebuildable | Verdict::RebuildOnline
+    )
+}
+
 /// Every entry of every known quarantine, newest first.
 pub fn list(home: &Path, data_dir: &Path) -> Vec<Quarantined> {
     let mut roots = remembered_roots(data_dir);
@@ -486,6 +497,9 @@ mod tests {
         assert!(may_purge_early(&quarantined));
         quarantined.entry.assessment.verdict = Verdict::RebuildOnline;
         assert!(!may_purge_early(&quarantined));
+        assert!(may_purge_on_request(&quarantined));
+        quarantined.entry.assessment.verdict = Verdict::ToReview;
+        assert!(!may_purge_on_request(&quarantined));
     }
 
     #[test]

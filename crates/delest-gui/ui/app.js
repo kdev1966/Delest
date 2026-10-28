@@ -10,7 +10,13 @@ const ENGLISH_WORDS = {
   "Aperçu avant la quarantaine": "Preview before the quarantine", "Libre avant": "Free before", "Libre après suppression": "Free once deleted",
   "Mettre en quarantaine": "Move into the quarantine", "Annuler": "Cancel", "Voir l'aperçu": "See the preview",
   "Supprimer définitivement": "Delete for good", "Supprimer définitivement la sélection": "Delete the selection for good",
-  "Seul ce qui se reconstruit localement peut être supprimé avant 7 jours.": "Only what rebuilds locally can be deleted before 7 days.",
+  "Supprimables maintenant": "Deletable now", "Avec le réseau, en le demandant": "With the network, on request", "À juger, gardés 7 jours": "To review, kept 7 days",
+  "se réinstalle avec le réseau ; supprimable en le demandant": "reinstalls from the network; deletable on request",
+  "à juger : gardé ses 7 jours": "to review: kept its 7 days", "À juger : gardé ses 7 jours, il y avait un doute.": "To review: kept its 7 days, there was a doubt.",
+  "Ils ne pourront plus être restaurés.": "They can no longer be restored.",
+  "d’entre eux se réinstallera avec le réseau : il faudra une connexion (npm install, pod install…).": "of them will need the network to reinstall (npm install, pod install…).",
+  "d’entre eux se réinstalleront avec le réseau : il faudra une connexion (npm install, pod install…).": "of them will need the network to reinstall (npm install, pod install…).",
+  "Les autres se reconstruiront à la prochaine compilation.": "The others will be rebuilt at the next build.",
   "Contrôle à chaque session des agents": "A check at each agent session", "Hook installé dans": "Hook installed in", "Réinstaller": "Reinstall", "Hook retiré de": "Hook removed from", " ; l'ancien fichier est sauvegardé.": "; the previous file is saved.", "Aucun agent pris en charge trouvé.": "No supported agent found.", "Ses réglages ne sont pas lisibles sans risque : rien n'est modifié.": "Its settings cannot be read safely: nothing is changed.", "Au début de chaque session, Delest regarde l'espace libre ; il ne dit rien sauf alerte.": "At the start of each session, Delest looks at the free space; it says nothing unless there is an alert.", "Contrôle toutes les 4 heures": "A check every 4 hours",
   "Dossiers protégés": "Protected folders", "Protéger": "Protect", "Règles en ombre": "Rules in shadow",
   "Delest ne propose jamais un dossier protégé, ni rien de ce qu'il contient.": "Delest never offers a protected folder, nor anything inside it.",
@@ -406,9 +412,23 @@ function drawQuarantine() {
   $("quarantine-line").textContent = entries.length
     ? `${entries.length} ${t(entries.length === 1 ? "élément" : "éléments")}, ${size(total)}${semi()}${t("les premiers sont supprimés dans")} ${next} ${t(next === 1 ? "jour" : "jours")}`
     : t("La quarantaine est vide.");
+  const notes = {
+    network: t("se réinstalle avec le réseau ; supprimable en le demandant"),
+    kept: t("à juger : gardé ses 7 jours"),
+  };
+  const groups = [
+    ["now", t("Supprimables maintenant")],
+    ["network", t("Avec le réseau, en le demandant")],
+    ["kept", t("À juger, gardés 7 jours")],
+  ].map(([purge, label]) => {
+    const group = entries.filter((entry) => entry.purge === purge);
+    return group.length ? `${label}${colon()}${group.length} (${size(group.reduce((sum, entry) => sum + entry.size, 0))})` : "";
+  }).filter(Boolean);
+  $("purge-rule").textContent = groups.join(" · ");
+  $("purge-rule").hidden = !entries.length;
   $("quarantine-list").innerHTML = entries.map((entry) => `<div class="row">
-      <input type="checkbox" data-id="${escape(entry.id)}" ${entry.may_purge ? "" : "disabled"} ${toPurge.has(entry.id) ? "checked" : ""} aria-label="${escape(entry.path)}">
-      <span><b>${escape(entry.path)}</b><br><span class="muted" style="font-size:10px">${escape(entry.kind)}</span></span>
+      <input type="checkbox" data-id="${escape(entry.id)}" ${entry.purge === "kept" ? `disabled title="${escape(t("À juger : gardé ses 7 jours, il y avait un doute."))}"` : ""} ${toPurge.has(entry.id) ? "checked" : ""} aria-label="${escape(entry.path)}">
+      <span><b>${escape(entry.path)}</b><br><span class="muted" style="font-size:10px">${escape(entry.kind)}${notes[entry.purge] ? ` · ${escape(notes[entry.purge])}` : ""}</span></span>
       <span class="mono" style="text-align:right">${escape(entry.size_shown)}</span>
       <span class="muted" style="font-size:10px">${escape(t("encore"))} ${entry.days_left} ${escape(t(entry.days_left === 1 ? "jour" : "jours"))}</span>
       <button data-restore="${escape(entry.id)}">${escape(t("Restaurer"))}</button>
@@ -441,13 +461,18 @@ $("quarantine-list").addEventListener("click", async (event) => {
 $("ask-purge").addEventListener("click", () => {
   const chosen = entries.filter((entry) => toPurge.has(entry.id));
   const bytes = chosen.reduce((sum, entry) => sum + entry.size, 0);
-  $("purge-line").innerHTML = `${escape(t("Supprimer définitivement"))} <b>${chosen.length} ${escape(t(chosen.length === 1 ? "élément" : "éléments"))}, ${escape(size(bytes))}</b>${ENGLISH ? "?" : " ?"} ${escape(t("Ils ne pourront plus être restaurés ; ils se reconstruiront à la prochaine compilation."))}`;
+  const online = chosen.filter((entry) => entry.purge === "network").length;
+  const after = !online
+    ? t("Ils ne pourront plus être restaurés ; ils se reconstruiront à la prochaine compilation.")
+    : `${t("Ils ne pourront plus être restaurés.")} ${online} ${t(online === 1 ? "d’entre eux se réinstallera avec le réseau : il faudra une connexion (npm install, pod install…)." : "d’entre eux se réinstalleront avec le réseau : il faudra une connexion (npm install, pod install…).")}${online < chosen.length ? ` ${t("Les autres se reconstruiront à la prochaine compilation.")}` : ""}`;
+  $("purge-line").innerHTML = `${escape(t("Supprimer définitivement"))} <b>${chosen.length} ${escape(t(chosen.length === 1 ? "élément" : "éléments"))}, ${escape(size(bytes))}</b>${ENGLISH ? "?" : " ?"} ${escape(after)}`;
   $("purge-confirm").hidden = false;
 });
 $("cancel-purge").addEventListener("click", () => { $("purge-confirm").hidden = true; });
 $("do-purge").addEventListener("click", async () => {
   try {
-    const freed = await invoke("purge", { ids: [...toPurge] });
+    const network = entries.some((entry) => toPurge.has(entry.id) && entry.purge === "network");
+    const freed = await invoke("purge", { ids: [...toPurge], network });
     await loadQuarantine();
     message("quarantine-message", `${t("Libéré")}${colon()}${freed}`);
   } catch (error) { message("quarantine-message", error, true); }

@@ -65,6 +65,7 @@ input[type="text"] {
   border-radius: 5px; height: 26px; padding: 0 8px; min-width: 0;
 }
 input[type="checkbox"] { width: 13px; height: 13px; accent-color: var(--accent); margin: 0; flex: none; }
+input[type="checkbox"]:disabled { opacity: 0.3; cursor: not-allowed; }
 a { color: var(--accent); }
 
 /* Recessed plates. */

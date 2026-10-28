@@ -520,7 +520,9 @@ struct Entry {
     size_shown: String,
     age_days: i64,
     days_left: i64,
-    may_purge: bool,
+    /// "now": rebuilds locally; "network": may go early on request, and needs the
+    /// network to come back; "kept": to review, kept its whole retention period.
+    purge: &'static str,
 }
 
 #[tauri::command]
@@ -538,7 +540,13 @@ async fn quarantine_list(ctx: State<'_, Ctx>) -> Result<Vec<Entry>, String> {
             size_shown: ctx.size(entry.size()),
             age_days: entry.age_days(now),
             days_left: (quarantine::RETENTION_DAYS - entry.age_days(now)).max(0),
-            may_purge: quarantine::may_purge_early(entry),
+            purge: if quarantine::may_purge_early(entry) {
+                "now"
+            } else if quarantine::may_purge_on_request(entry) {
+                "network"
+            } else {
+                "kept"
+            },
         })
         .collect())
 }
@@ -570,14 +578,19 @@ async fn restore(ctx: State<'_, Ctx>, id: String) -> Result<String, String> {
     Ok(ctx.short(&entry.entry.original))
 }
 
-/// Deletes the given entries for good; only those that rebuild locally.
+/// Deletes the given entries for good: those that rebuild locally, and with
+/// `network`, which the developer confirmed knowing it, those that rebuild from the
+/// network too.
 #[tauri::command]
-async fn purge(ctx: State<'_, Ctx>, ids: Vec<String>) -> Result<String, String> {
+async fn purge(ctx: State<'_, Ctx>, ids: Vec<String>, network: bool) -> Result<String, String> {
     let entries = quarantine::list(&ctx.home, &ctx.data_dir);
+    let allowed = |entry: &Quarantined| {
+        quarantine::may_purge_early(entry) || (network && quarantine::may_purge_on_request(entry))
+    };
     let mut freed = 0;
     for entry in entries
         .iter()
-        .filter(|entry| ids.contains(&entry.id()) && quarantine::may_purge_early(entry))
+        .filter(|entry| ids.contains(&entry.id()) && allowed(entry))
     {
         quarantine::purge(entry).map_err(|error| error.to_string())?;
         freed += entry.size();
