@@ -53,6 +53,7 @@
   .item .trace { grid-column: 2 / 4; font-size: 10px; color: var(--muted); }
   .item .note { color: var(--review); font-size: 10px; }
   .item .value { text-align: right; font-family: var(--mono); font-size: 11px; }
+  .head-bar { position: sticky; top: -9px; z-index: 1; margin: -9px -12px 0; padding: 9px 12px 8px; background: var(--panel-top); border-bottom: 1px solid var(--edge); }
   .footer-bar { position: sticky; bottom: -12px; margin: 0 -12px -12px; padding: 8px 12px; background: var(--panel-bottom); border-top: 1px solid var(--edge); display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
   .confirm { border-color: var(--accent); }
   .before-after { display: grid; grid-template-columns: max-content minmax(0, 1fr) 60px; gap: 6px 10px; align-items: center; margin: 8px 0; font-size: 11px; }
@@ -175,23 +176,25 @@
   </section>
 
   <section id="page-quarantaine" class="stack" style="gap:14px" hidden>
-    <header class="page-head">
-      <h1 data-t>Quarantaine</h1>
-      <span id="quarantine-line" class="muted"></span>
-    </header>
-    <div id="quarantine-list" class="list"></div>
-    <div id="purge-confirm" class="card confirm" hidden>
-      <p id="purge-line" style="margin-bottom:12px"></p>
-      <div class="inline">
-        <button id="do-purge" class="danger" data-t>Supprimer définitivement</button>
-        <button id="cancel-purge" data-t>Annuler</button>
+    <div class="head-bar stack" style="gap:8px">
+      <header class="page-head">
+        <h1 data-t>Quarantaine</h1>
+        <span id="quarantine-line" class="muted"></span>
+        <div class="head-actions">
+          <button id="ask-purge" class="danger" disabled data-t>Supprimer définitivement la sélection</button>
+        </div>
+      </header>
+      <p id="purge-rule" class="muted" style="margin:0;font-size:10px" hidden></p>
+      <div id="purge-confirm" class="card confirm" hidden>
+        <p id="purge-line" style="margin-bottom:12px"></p>
+        <div class="inline">
+          <button id="do-purge" class="danger" data-t>Supprimer définitivement</button>
+          <button id="cancel-purge" data-t>Annuler</button>
+        </div>
       </div>
+      <div id="quarantine-message" class="message" hidden></div>
     </div>
-    <div id="quarantine-message" class="message" hidden></div>
-    <div class="inline">
-      <button id="ask-purge" class="danger" disabled data-t>Supprimer définitivement la sélection</button>
-      <span class="muted" style="font-size:10px;align-self:center" data-t>Seul ce qui se reconstruit localement peut être supprimé avant 7 jours.</span>
-    </div>
+    <div id="quarantine-list" class="list"></div>
   </section>
 
   <section id="page-demander" class="stack" style="gap:10px" hidden>

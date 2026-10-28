@@ -230,10 +230,15 @@ pub fn clean(
             return Err(io::Error::other(message));
         }
         let days = quarantine::RETENTION_DAYS;
+        let stay = if selected.len() == 1 {
+            "Il reste restaurable"
+        } else {
+            "Ils restent restaurables"
+        };
         let question = tr!(
             lang,
             "\nMove {count} ({size}) into the quarantine? They can be restored for {days} days.",
-            "\nMettre {count} ({size}) en quarantaine ? Ils restent restaurables {days} jours."
+            "\nMettre {count} ({size}) en quarantaine ? {stay} {days} jours."
         );
         if !confirm(&question, lang)? {
             println!(
@@ -441,6 +446,7 @@ pub fn purge(
     arbiter: &Arbiter,
     id: Option<String>,
     dry_run: bool,
+    network: bool,
     yes: bool,
     lang: Lang,
 ) -> io::Result<ExitCode> {
@@ -460,9 +466,11 @@ pub fn purge(
         }
         None => entries.iter().collect(),
     };
-    let (mut eligible, kept): (Vec<&Quarantined>, Vec<&Quarantined>) = chosen
-        .into_iter()
-        .partition(|entry| quarantine::may_purge_early(entry));
+    let (mut eligible, kept): (Vec<&Quarantined>, Vec<&Quarantined>) =
+        chosen.into_iter().partition(|entry| {
+            quarantine::may_purge_early(entry)
+                || (network && quarantine::may_purge_on_request(entry))
+        });
     eligible.sort_by_key(|entry| std::cmp::Reverse(entry.size()));
     for entry in &kept {
         let path = tilde(&entry.entry.original, home);
@@ -474,6 +482,20 @@ pub fn purge(
                 lang,
                 "  Kept for its {days} days: {path} ({verdict})",
                 "  Gardé ses {days} jours : {path} ({verdict})"
+            )
+        );
+    }
+    if !network
+        && kept
+            .iter()
+            .any(|entry| quarantine::may_purge_on_request(entry))
+    {
+        println!(
+            "{}",
+            tr!(
+                lang,
+                "  With --network, what reinstalls from the network goes now too.",
+                "  Avec --network, ce qui se réinstalle avec le réseau part aussi maintenant."
             )
         );
     }
@@ -490,14 +512,20 @@ pub fn purge(
     }
     let freed: u64 = eligible.iter().map(|entry| entry.size()).sum();
     let (count, size) = (items(eligible.len(), lang), lang::size(freed, lang));
-    println!(
-        "{}",
+    let heading = if network {
+        tr!(
+            lang,
+            "To delete for good — {count} ({size}), rebuilt locally or from the network:",
+            "À supprimer définitivement — {count} ({size}), reconstruits localement ou avec le réseau :"
+        )
+    } else {
         tr!(
             lang,
             "To delete for good — {count} ({size}), rebuilt locally:",
             "À supprimer définitivement — {count} ({size}), reconstruits localement :"
         )
-    );
+    };
+    println!("{heading}");
     for entry in &eligible {
         let size = lang::size(entry.size(), lang);
         println!("  {size:>8}  {}", tilde(&entry.entry.original, home));
@@ -521,11 +549,21 @@ pub fn purge(
                 "pas de terminal pour confirmer : ajoutez --yes."
             )));
         }
-        let question = tr!(
+        let mut question = tr!(
             lang,
             "Delete them for good? They can no longer be restored.",
             "Les supprimer définitivement ? Ils ne pourront plus être restaurés."
         );
+        if eligible
+            .iter()
+            .any(|entry| !quarantine::may_purge_early(entry))
+        {
+            question.push_str(&tr!(
+                lang,
+                " What reinstalls from the network will need it.",
+                " Ce qui se réinstalle avec le réseau en aura besoin."
+            ));
+        }
         if !confirm(&question, lang)? {
             println!(
                 "{}",

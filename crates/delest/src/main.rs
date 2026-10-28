@@ -121,6 +121,10 @@ enum Command {
         /// Show what would be deleted without deleting it.
         #[arg(long)]
         dry_run: bool,
+        /// Also what reinstalls from the network (node_modules, Pods...), which will need it
+        /// again; what is to review always keeps its 7 days.
+        #[arg(long)]
+        network: bool,
         /// Do not ask for confirmation.
         #[arg(short, long)]
         yes: bool,
@@ -263,7 +267,12 @@ fn run(command: Command, arbiter: &Arbiter, lang: Lang) -> io::Result<ExitCode> 
             actions::clean(arbiter, roots, options, lang)
         }),
         Command::Restore { id, list, yes } => actions::restore(arbiter, id, list, yes, lang),
-        Command::Purge { id, dry_run, yes } => actions::purge(arbiter, id, dry_run, yes, lang),
+        Command::Purge {
+            id,
+            dry_run,
+            network,
+            yes,
+        } => actions::purge(arbiter, id, dry_run, network, yes, lang),
         Command::Doctor => actions::doctor(arbiter, lang),
         Command::Status => actions::status(arbiter, lang),
         Command::Install { dry_run, yes } => integration::install(arbiter, dry_run, yes, lang),

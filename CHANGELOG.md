@@ -4,6 +4,27 @@ All notable changes to Delest are listed here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and versions follow
 [Semantic Versioning](https://semver.org/).
 
+## [0.1.4] - 2026-10-28
+
+### Changed
+
+- **The quarantine tab**: its delete button sits at the top right, and the top of the
+  tab stays in view while the list scrolls; the confirmation shows there too.
+- Each entry says why it waits: what reinstalls from the network can be deleted on
+  request, what was to review keeps its 7 days. A line sums up the three groups, and a
+  disabled checkbox looks disabled.
+
+### Added
+
+- What reinstalls from the network (`node_modules`, `Pods`…) can be deleted before its
+  7 days, once the confirmation has said it will need the network; `delest purge
+  --network` does the same. What was to review still keeps its 7 days.
+
+### Fixed
+
+- In French, the quarantine question agrees with a single item: « Il reste restaurable
+  7 jours ».
+
 ## [0.1.3] - 2026-10-26
 
 ### Fixed
@@ -93,6 +114,7 @@ its reasons.
 - The app has been tried on an Intel Mac and on Windows 11, not yet on an Apple
   Silicon Mac nor on a Linux desktop.
 
+[0.1.4]: https://github.com/kdev1966/Delest/releases/tag/v0.1.4
 [0.1.3]: https://github.com/kdev1966/Delest/releases/tag/v0.1.3
 [0.1.2]: https://github.com/kdev1966/Delest/releases/tag/v0.1.2
 [0.1.1]: https://github.com/kdev1966/Delest/releases/tag/v0.1.1
