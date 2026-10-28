@@ -4,6 +4,20 @@ All notable changes to Delest are listed here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and versions follow
 [Semantic Versioning](https://semver.org/).
 
+## [0.1.6] - 2026-10-28
+
+### Added
+
+- **Check all** in the quarantine tab: every entry that may go now, never what is to
+  review.
+
+### Fixed
+
+- A second click during a long deletion started a second one, which stopped on a
+  folder the first had just deleted (“No such file or directory”). Nothing can be
+  clicked until the deletion is over, the app says it is running, one deletion runs at
+  a time, and an entry already gone counts as deleted.
+
 ## [0.1.5] - 2026-10-28
 
 ### Added
@@ -123,6 +137,7 @@ its reasons.
 - The app has been tried on an Intel Mac and on Windows 11, not yet on an Apple
   Silicon Mac nor on a Linux desktop.
 
+[0.1.6]: https://github.com/kdev1966/Delest/releases/tag/v0.1.6
 [0.1.5]: https://github.com/kdev1966/Delest/releases/tag/v0.1.5
 [0.1.4]: https://github.com/kdev1966/Delest/releases/tag/v0.1.4
 [0.1.3]: https://github.com/kdev1966/Delest/releases/tag/v0.1.3
