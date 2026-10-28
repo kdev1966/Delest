@@ -54,6 +54,8 @@
   .item .note { color: var(--review); font-size: 10px; }
   .item .value { text-align: right; font-family: var(--mono); font-size: 11px; }
   .head-bar { position: sticky; top: -9px; z-index: 1; margin: -9px -12px 0; padding: 9px 12px 8px; background: var(--panel-top); border-bottom: 1px solid var(--edge); }
+  .update-bar { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; border-color: var(--accent); }
+  .update-bar span { margin-right: auto; }
   .footer-bar { position: sticky; bottom: -12px; margin: 0 -12px -12px; padding: 8px 12px; background: var(--panel-bottom); border-top: 1px solid var(--edge); display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
   .confirm { border-color: var(--accent); }
   .before-after { display: grid; grid-template-columns: max-content minmax(0, 1fr) 60px; gap: 6px 10px; align-items: center; margin: 8px 0; font-size: 11px; }
@@ -103,6 +105,11 @@
 </div>
 
 <main>
+  <div id="update" class="message update-bar" hidden>
+    <span id="update-line"></span>
+    <button id="update-download" class="primary" data-t>Télécharger</button>
+    <button id="update-later" data-t>Plus tard</button>
+  </div>
   <section id="page-disque" class="stack" style="gap:8px">
     <header class="page-head">
       <h1 data-t>Disque</h1>
@@ -274,6 +281,13 @@
     <div class="card">
       <h2 data-t>Journal des avis</h2>
       <div id="journal" class="list"></div>
+    </div>
+    <div class="card setting">
+      <div><h2 style="margin:0 0 4px" data-t>Nouvelles versions</h2><p class="muted" data-t>Au plus une fois par jour, Delest demande à GitHub la dernière version publiée ; rien d'autre n'est envoyé.</p></div>
+      <div class="views" role="group" aria-label="Nouvelles versions">
+        <button id="updates-on" class="filter" data-t>Vérifier</button>
+        <button id="updates-off" class="filter" data-t>Jamais</button>
+      </div>
     </div>
     <div class="card setting">
       <div><h2 style="margin:0 0 4px" data-t>À propos</h2><p id="about-line" class="muted"></p></div>

@@ -33,6 +33,9 @@ pub struct Memory {
     /// The developer's agent is never asked, even on a click.
     #[serde(default)]
     pub agent_never: bool,
+    /// Never ask GitHub whether a newer version was published.
+    #[serde(default)]
+    pub updates_never: bool,
 }
 
 #[derive(Clone, Debug, Serialize, Deserialize)]

@@ -10,6 +10,9 @@ const ENGLISH_WORDS = {
   "Aperçu avant la quarantaine": "Preview before the quarantine", "Libre avant": "Free before", "Libre après suppression": "Free once deleted",
   "Mettre en quarantaine": "Move into the quarantine", "Annuler": "Cancel", "Voir l'aperçu": "See the preview",
   "Supprimer définitivement": "Delete for good", "Supprimer définitivement la sélection": "Delete the selection for good",
+  "Nouvelles versions": "New versions", "Vérifier": "Check", "Télécharger": "Download", "Plus tard": "Later",
+  "Au plus une fois par jour, Delest demande à GitHub la dernière version publiée ; rien d'autre n'est envoyé.": "At most once a day, Delest asks GitHub for the latest published version; nothing else is sent.",
+  "est disponible": "is available", "vous avez": "you have", "Vérification des nouvelles versions désactivée.": "Checking for new versions turned off.", "Vérification des nouvelles versions activée.": "Checking for new versions turned on.",
   "Supprimables maintenant": "Deletable now", "Avec le réseau, en le demandant": "With the network, on request", "À juger, gardés 7 jours": "To review, kept 7 days",
   "se réinstalle avec le réseau ; supprimable en le demandant": "reinstalls from the network; deletable on request",
   "à juger : gardé ses 7 jours": "to review: kept its 7 days", "À juger : gardé ses 7 jours, il y avait un doute.": "To review: kept its 7 days, there was a doubt.",
@@ -484,6 +487,8 @@ let current = null;
 
 function drawSettings(s) {
   current = s;
+  $("updates-on").setAttribute("aria-pressed", String(!s.updates_never));
+  $("updates-off").setAttribute("aria-pressed", String(s.updates_never));
   const states = {
     installed: t("Installé : Delest vérifie le disque au début de chaque session."),
     absent: t("Pas installé."),
@@ -633,6 +638,8 @@ $("hooks").addEventListener("click", (event) => {
     `${on ? t("Hook installé dans") : t("Hook retiré de")} ${name}${on ? t(" ; l'ancien fichier est sauvegardé.") : "."}`);
 });
 $("timer-toggle").addEventListener("click", () => change("set_timer", { on: !current.timer }, ""));
+$("updates-on").addEventListener("click", () => change("set_updates", { never: false }, t("Vérification des nouvelles versions activée.")));
+$("updates-off").addEventListener("click", () => change("set_updates", { never: true }, t("Vérification des nouvelles versions désactivée.")));
 $("protect-add").addEventListener("click", () => {
   const path = $("protect-path").value.trim();
   if (path) change("set_protected", { path, on: true }, `${t("Protégé")}${colon()}${path}`).then(() => { $("protect-path").value = ""; });
@@ -644,6 +651,9 @@ $("protected").addEventListener("click", (event) => {
 
 // ------------------------------------------------------------------ Start
 
+$("update-download").addEventListener("click", () => invoke("open_download").catch(() => {}));
+$("update-later").addEventListener("click", () => { $("update").hidden = true; });
+
 for (const tab of document.querySelectorAll(".tab")) tab.addEventListener("click", () => show(tab.dataset.page));
 $("close").addEventListener("click", () => invoke("close_window", { label: "main" }));
 $("gauge").addEventListener("click", () => invoke("open_gauge"));
@@ -652,6 +662,12 @@ translate(ENGLISH_WORDS).then(async () => {
   const first = await invoke("first_page");
   if (first === "inconnus") showUnknown = true;
   show(first === "inconnus" ? "propositions" : first);
+  // A newer version: said once per opening of the window, never more than asked for.
+  Promise.all([invoke("update_available"), invoke("about")]).then(([latest, about]) => {
+    if (!latest) return;
+    $("update-line").textContent = `Delest ${latest} ${t("est disponible")} (${t("vous avez")} ${about.version}).`;
+    $("update").hidden = false;
+  }).catch(() => {});
   // The note on the last scan, whatever the first page.
   invoke("overview").then((o) => {
     $("scan-note").textContent = o.scanned ? `${t("Dernier scan")}${colon()}${o.roots.join(", ")}, ${o.scanned}` : t("Aucun scan encore.");

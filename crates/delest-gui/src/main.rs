@@ -26,7 +26,7 @@ use delest_core::report;
 use delest_core::rules::RULES;
 use delest_core::verdict::{Assessment, Verdict};
 use delest_core::volume::{self, Level};
-use delest_core::{home_dir, paths, scan, tilde, timer, tr};
+use delest_core::{home_dir, paths, scan, tilde, timer, tr, update};
 use serde::Serialize;
 use tauri::tray::{MouseButton, MouseButtonState, TrayIconBuilder, TrayIconEvent};
 use tauri::{AppHandle, Emitter, Manager, PhysicalPosition, State, WindowEvent};
@@ -158,9 +158,8 @@ fn about() -> About {
     }
 }
 
-/// The project's page in the browser: a fixed address, nothing taken from the page.
-#[tauri::command]
-fn open_project() -> Result<(), String> {
+/// Opens a fixed address in the browser, nothing taken from the page.
+fn open_in_browser(address: &str) -> Result<(), String> {
     let opener = if cfg!(target_os = "macos") {
         "open"
     } else if cfg!(windows) {
@@ -169,9 +168,43 @@ fn open_project() -> Result<(), String> {
         "xdg-open"
     };
     std::process::Command::new(opener)
-        .arg(env!("CARGO_PKG_REPOSITORY"))
+        .arg(address)
         .status()
         .map(|_| ())
+        .map_err(|error| error.to_string())
+}
+
+/// The project's page in the browser.
+#[tauri::command]
+fn open_project() -> Result<(), String> {
+    open_in_browser(env!("CARGO_PKG_REPOSITORY"))
+}
+
+/// The newer version published, if any, unless the developer turned the question off.
+#[tauri::command]
+async fn update_available(ctx: State<'_, Ctx>) -> Result<Option<String>, String> {
+    let memory = Memory::load(&ctx.data_dir).map_err(|error| error.to_string())?;
+    if memory.updates_never {
+        return Ok(None);
+    }
+    let current = env!("CARGO_PKG_VERSION");
+    Ok(update::newer_than(current, &ctx.data_dir, now(), || {
+        update::fetch_latest(current)
+    }))
+}
+
+/// The download page in the browser.
+#[tauri::command]
+fn open_download() -> Result<(), String> {
+    open_in_browser(update::DOWNLOAD)
+}
+
+#[tauri::command]
+async fn set_updates(ctx: State<'_, Ctx>, never: bool) -> Result<(), String> {
+    let mut memory = Memory::load(&ctx.data_dir).map_err(|error| error.to_string())?;
+    memory.updates_never = never;
+    memory
+        .save(&ctx.data_dir)
         .map_err(|error| error.to_string())
 }
 
@@ -629,6 +662,7 @@ struct Settings {
     timer_supported: bool,
     timer: bool,
     shadow: Vec<Shadow>,
+    updates_never: bool,
 }
 
 /// The `delest` command the hook and the timer run: the one installed with the
@@ -700,6 +734,7 @@ async fn settings(ctx: State<'_, Ctx>) -> Result<Settings, String> {
         timer_supported: timer::supported(),
         timer: timer::enabled(&ctx.home),
         shadow,
+        updates_never: memory.updates_never,
     })
 }
 
@@ -1032,6 +1067,9 @@ fn main() {
             first_page,
             about,
             open_project,
+            update_available,
+            open_download,
+            set_updates,
             js_error,
             overview,
             rescan,

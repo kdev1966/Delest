@@ -4,6 +4,15 @@ All notable changes to Delest are listed here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and versions follow
 [Semantic Versioning](https://semver.org/).
 
+## [Unreleased]
+
+### Added
+
+- **New versions**: when a newer Delest is published, the app says so at the top of its
+  window, with a button to the download page; it installs nothing by itself. It asks
+  GitHub at most once a day and sends nothing but the request; Settings › New versions
+  turns it off.
+
 ## [0.1.4] - 2026-10-28
 
 ### Changed
