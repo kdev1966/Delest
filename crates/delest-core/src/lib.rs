@@ -26,6 +26,7 @@ pub mod report;
 pub mod rules;
 pub mod scan;
 pub mod timer;
+pub mod update;
 pub mod verdict;
 pub mod volume;
 
