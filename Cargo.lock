@@ -649,7 +649,7 @@ dependencies = [
 
 [[package]]
 name = "delest"
-version = "0.1.4"
+version = "0.1.5"
 dependencies = [
  "chrono",
  "clap",
@@ -660,7 +660,7 @@ dependencies = [
 
 [[package]]
 name = "delest-core"
-version = "0.1.4"
+version = "0.1.5"
 dependencies = [
  "chrono",
  "fs4",
@@ -674,7 +674,7 @@ dependencies = [
 
 [[package]]
 name = "delest-gui"
-version = "0.1.4"
+version = "0.1.5"
 dependencies = [
  "chrono",
  "delest-core",

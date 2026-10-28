@@ -4,7 +4,7 @@ All notable changes to Delest are listed here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and versions follow
 [Semantic Versioning](https://semver.org/).
 
-## [Unreleased]
+## [0.1.5] - 2026-10-28
 
 ### Added
 
@@ -123,6 +123,7 @@ its reasons.
 - The app has been tried on an Intel Mac and on Windows 11, not yet on an Apple
   Silicon Mac nor on a Linux desktop.
 
+[0.1.5]: https://github.com/kdev1966/Delest/releases/tag/v0.1.5
 [0.1.4]: https://github.com/kdev1966/Delest/releases/tag/v0.1.4
 [0.1.3]: https://github.com/kdev1966/Delest/releases/tag/v0.1.3
 [0.1.2]: https://github.com/kdev1966/Delest/releases/tag/v0.1.2
