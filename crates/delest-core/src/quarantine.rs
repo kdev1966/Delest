@@ -295,9 +295,12 @@ pub fn restore(quarantined: &Quarantined) -> Result<(), Error> {
     fs::remove_dir(&quarantined.dir).map_err(io_error(&quarantined.dir))
 }
 
-/// Deletes the entry for good.
+/// Deletes the entry for good; an entry already gone counts as deleted.
 pub fn purge(quarantined: &Quarantined) -> io::Result<()> {
-    fs::remove_dir_all(&quarantined.dir)
+    match fs::remove_dir_all(&quarantined.dir) {
+        Err(error) if error.kind() == io::ErrorKind::NotFound => Ok(()),
+        done => done,
+    }
 }
 
 /// Whether the entry may be deleted before its retention period ends: only what
@@ -500,6 +503,15 @@ mod tests {
         assert!(may_purge_on_request(&quarantined));
         quarantined.entry.assessment.verdict = Verdict::ToReview;
         assert!(!may_purge_on_request(&quarantined));
+    }
+
+    #[test]
+    fn an_entry_already_gone_counts_as_purged() {
+        let (_dir, home, data) = setup();
+        let quarantined = put(&assessment(&home.join("proj/target"), 6), &home, &data, 0).unwrap();
+        purge(&quarantined).unwrap();
+        assert!(!quarantined.dir.exists());
+        purge(&quarantined).unwrap();
     }
 
     #[test]

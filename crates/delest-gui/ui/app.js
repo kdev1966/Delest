@@ -10,6 +10,7 @@ const ENGLISH_WORDS = {
   "Aperçu avant la quarantaine": "Preview before the quarantine", "Libre avant": "Free before", "Libre après suppression": "Free once deleted",
   "Mettre en quarantaine": "Move into the quarantine", "Annuler": "Cancel", "Voir l'aperçu": "See the preview",
   "Supprimer définitivement": "Delete for good", "Supprimer définitivement la sélection": "Delete the selection for good",
+  "Tout cocher": "Check all", "Suppression…": "Deleting…", "Suppression en cours : une minute ou deux pour plusieurs gigaoctets.": "Deleting: a minute or two for several gigabytes.",
   "Nouvelles versions": "New versions", "Vérifier": "Check", "Télécharger": "Download", "Plus tard": "Later",
   "Au plus une fois par jour, Delest demande à GitHub la dernière version publiée ; rien d'autre n'est envoyé.": "At most once a day, Delest asks GitHub for the latest published version; nothing else is sent.",
   "est disponible": "is available", "vous avez": "you have", "Vérification des nouvelles versions désactivée.": "Checking for new versions turned off.", "Vérification des nouvelles versions activée.": "Checking for new versions turned on.",
@@ -437,8 +438,29 @@ function drawQuarantine() {
       <button data-restore="${escape(entry.id)}">${escape(t("Restaurer"))}</button>
     </div>`).join("");
   $("quarantine-list").hidden = !entries.length;
+  drawPurgeAll();
+}
+
+// What can be checked: everything but what is to review.
+function purgeable() { return entries.filter((entry) => entry.purge !== "kept"); }
+
+function drawPurgeAll() {
+  const all = purgeable();
+  const chosen = all.filter((entry) => toPurge.has(entry.id)).length;
+  document.querySelector(".check-all").hidden = !all.length;
+  $("purge-all").disabled = false;
+  $("purge-all").checked = all.length > 0 && chosen === all.length;
+  $("purge-all").indeterminate = chosen > 0 && chosen < all.length;
   $("ask-purge").disabled = toPurge.size === 0;
 }
+
+$("purge-all").addEventListener("change", (event) => {
+  toPurge.clear();
+  if (event.target.checked) for (const entry of purgeable()) toPurge.add(entry.id);
+  for (const box of document.querySelectorAll("#quarantine-list input[data-id]")) box.checked = toPurge.has(box.dataset.id);
+  $("purge-confirm").hidden = true;
+  drawPurgeAll();
+});
 
 async function loadQuarantine() {
   $("purge-confirm").hidden = true;
@@ -450,7 +472,7 @@ $("quarantine-list").addEventListener("change", (event) => {
   const id = event.target.dataset.id;
   if (!id) return;
   event.target.checked ? toPurge.add(id) : toPurge.delete(id);
-  $("ask-purge").disabled = toPurge.size === 0;
+  drawPurgeAll();
 });
 $("quarantine-list").addEventListener("click", async (event) => {
   const id = event.target.dataset && event.target.dataset.restore;
@@ -473,12 +495,23 @@ $("ask-purge").addEventListener("click", () => {
 });
 $("cancel-purge").addEventListener("click", () => { $("purge-confirm").hidden = true; });
 $("do-purge").addEventListener("click", async () => {
+  // Nothing can be clicked again until the deletion is over: it takes a while.
+  const busy = [$("do-purge"), $("cancel-purge"), $("ask-purge"), $("purge-all"), ...document.querySelectorAll("#quarantine-list input, #quarantine-list button")];
+  for (const element of busy) element.disabled = true;
+  $("do-purge").textContent = t("Suppression…");
+  message("quarantine-message", t("Suppression en cours : une minute ou deux pour plusieurs gigaoctets."));
   try {
     const network = entries.some((entry) => toPurge.has(entry.id) && entry.purge === "network");
     const freed = await invoke("purge", { ids: [...toPurge], network });
     await loadQuarantine();
     message("quarantine-message", `${t("Libéré")}${colon()}${freed}`);
-  } catch (error) { message("quarantine-message", error, true); }
+  } catch (error) {
+    message("quarantine-message", error, true);
+    await loadQuarantine();
+  }
+  $("do-purge").disabled = false;
+  $("cancel-purge").disabled = false;
+  $("do-purge").textContent = t("Supprimer définitivement");
 });
 
 // ------------------------------------------------------------------ Settings

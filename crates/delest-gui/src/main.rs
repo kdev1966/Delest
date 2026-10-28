@@ -616,6 +616,15 @@ async fn restore(ctx: State<'_, Ctx>, id: String) -> Result<String, String> {
 /// network too.
 #[tauri::command]
 async fn purge(ctx: State<'_, Ctx>, ids: Vec<String>, network: bool) -> Result<String, String> {
+    // A second click while gigabytes are being deleted must not start a second run.
+    static PURGING: Mutex<()> = Mutex::new(());
+    let Ok(_running) = PURGING.try_lock() else {
+        return Err(tr!(
+            ctx.lang(),
+            "A deletion is already running.",
+            "Une suppression est déjà en cours."
+        ));
+    };
     let entries = quarantine::list(&ctx.home, &ctx.data_dir);
     let allowed = |entry: &Quarantined| {
         quarantine::may_purge_early(entry) || (network && quarantine::may_purge_on_request(entry))

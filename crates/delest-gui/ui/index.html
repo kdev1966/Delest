@@ -54,6 +54,7 @@
   .item .note { color: var(--review); font-size: 10px; }
   .item .value { text-align: right; font-family: var(--mono); font-size: 11px; }
   .head-bar { position: sticky; top: -9px; z-index: 1; margin: -9px -12px 0; padding: 9px 12px 8px; background: var(--panel-top); border-bottom: 1px solid var(--edge); }
+  .check-all { display: flex; gap: 6px; align-items: center; color: var(--soft); cursor: pointer; }
   .update-bar { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; border-color: var(--accent); }
   .update-bar span { margin-right: auto; }
   .footer-bar { position: sticky; bottom: -12px; margin: 0 -12px -12px; padding: 8px 12px; background: var(--panel-bottom); border-top: 1px solid var(--edge); display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
@@ -188,6 +189,7 @@
         <h1 data-t>Quarantaine</h1>
         <span id="quarantine-line" class="muted"></span>
         <div class="head-actions">
+          <label class="check-all" hidden><input type="checkbox" id="purge-all"> <span data-t>Tout cocher</span></label>
           <button id="ask-purge" class="danger" disabled data-t>Supprimer définitivement la sélection</button>
         </div>
       </header>

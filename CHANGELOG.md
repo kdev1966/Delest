@@ -4,6 +4,20 @@ All notable changes to Delest are listed here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and versions follow
 [Semantic Versioning](https://semver.org/).
 
+## [Unreleased]
+
+### Added
+
+- **Check all** in the quarantine tab: every entry that may go now, never what is to
+  review.
+
+### Fixed
+
+- A second click during a long deletion started a second one, which stopped on a
+  folder the first had just deleted (“No such file or directory”). Nothing can be
+  clicked until the deletion is over, the app says it is running, one deletion runs at
+  a time, and an entry already gone counts as deleted.
+
 ## [0.1.5] - 2026-10-28
 
 ### Added
